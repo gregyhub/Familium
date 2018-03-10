@@ -1,0 +1,179 @@
+
+TABLE Post :
+	id post
+	id membre (FK)
+	titre
+	id catégorie (FK)
+	date
+	message
+	photo
+
+TABLE Naissance Hérite de Post + :
+	id post
+	Prénom du bébé
+	Sexe du bébé
+	poids (null)
+	taille (null)
+	date de naissance (null)
+	heure de naissance (null)
+
+
+TABLE Evenement hérite de post + :
+	id post
+	date event
+	lieu event
+
+TABLE Invitation
+	id invitation
+	id post (FK)
+	? invit (All ou Custom)
+	id membre (FK)
+
+
+TABLE Catégorie
+	id catégorie
+	nom catégorie
+
+
+TABLE Membre
+	id membre
+	Nom
+	Prénom
+	Email
+	tel
+	avatar
+	date de naissance
+	adresse
+	cp
+	ville
+	Pays
+	mdp
+	role (admin / membre / en attente)
+
+TABLE Commentaires
+	id commentaire
+	id membre (FK)
+	date
+	commentaire
+	id post (FK)
+
+TABLE album
+	id album
+	id membre (FK)
+	titre
+	description
+	visibilité
+	date modif
+
+TABLE photos
+	id photo
+	titre
+	description
+	nom photo
+
+TABLE album-photo
+	id album-photo
+	id photo (FK)
+	id album (FK)
+
+
+TABLE message privé group
+	id message privé group
+	id membre1 (FK)
+	id membre2 (FK)
+
+TABLE message privé
+	id message
+	id message privé group (FK)
+	id auteur
+	date
+	message
+TABLE Post :
+	id post
+	id membre (FK)
+	titre
+	id catégorie (FK)
+	date
+	message
+	photo
+
+TABLE Naissance Hérite de Post + :
+	id post
+	Prénom du bébé
+	Sexe du bébé
+	poids (null)
+	taille (null)
+	date de naissance (null)
+	heure de naissance (null)
+
+
+TABLE Evenement hérite de post + :
+	id post
+	date event
+	lieu event
+
+TABLE Invitation
+	id invitation
+	id post (FK)
+	? invit (All ou Custom)
+	id membre (FK)
+
+
+TABLE Catégorie
+	id catégorie
+	nom catégorie
+
+
+TABLE Membre
+	id membre
+	Nom
+	Prénom
+	Email
+	tel
+	avatar
+	date de naissance
+	adresse
+	cp
+	ville
+	Pays
+	mdp
+	role (admin / membre / en attente)
+
+TABLE Commentaires
+	id commentaire
+	id membre (FK)
+	date
+	commentaire
+	id post (FK)
+
+TABLE album
+	id album
+	id membre (FK)
+	titre
+	description
+	visibilité
+	date modif
+
+TABLE photos
+	id photo
+	titre
+	description
+	nom photo
+
+TABLE album-photo
+	id album-photo
+	id photo (FK)
+	id album (FK)
+
+
+TABLE message privé group
+	id message privé group
+	id membre1 (FK)
+	id membre2 (FK)
+
+TABLE message privé
+	id message
+	id message privé group (FK)
+	id auteur
+	date
+	message

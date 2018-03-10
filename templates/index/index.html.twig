@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <h1>Accueil</h1>
+    
+    {% for article in last_articles %}
+         {% include 'article/preview.html.twig' with {"article": article} only %}
+        
+    {% endfor %}
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }} {# permet de garder le block tel qu'il est défini dans layout et d'y ajouter notre contenu spécifiqu / sinon on perd les script JQ et BootStrap #}
+    <script>console.log('mon js');</script>
+{% endblock %}
