@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+   {# <div>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="email"></label>
+                <input type="text" name="email" id="email">
+            </div>
+            <button type="submit" class="btn btn-primary">Inviter</button>
+        </form>
+    </div>#}
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>membre</th>
+            <th>email</th>
+            <th>téléphone</th>
+            <th>date de naissance</th>
+            <th>adresse</th>
+            <th>cp</th>
+            <th>ville</th>
+            <th>pays</th>
+            <th>role</th>
+        </tr>
+        
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.getFullname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.telephone }}</td>
+            <td>{{ user.datenaissance|date('d/m/Y') }}</td>
+            <td>{{ user.adresse }}</td>
+            <td>{{ user.cp }}</td>
+            <td>{{ user.ville}}</td>
+            <td>{{ user.pays }}</td>
+            {% if user.role == 'ROLE_ADMIN' %}
+                {%  set role='ROLE_USER'  %}
+            {% else %}
+                {%  set role='ROLE_ADMIN'  %}
+            {% endif %}
+            {% if app.user.id == user.id %}
+            <td>{{ user.role }}</td>
+            {% else %}
+            <td><a title="passer le membre {{ role }}" href="{{ path('app_admin_user_liste', {'id':user.id, 'role': role}) }}">{{ user.role }}</a></td>
+            {% endif %}
+        </tr> 
+    {% endfor %}
+    
+    </table>
+{% endblock %}

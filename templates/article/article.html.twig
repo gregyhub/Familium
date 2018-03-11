@@ -8,7 +8,6 @@
                 <img src="{{ asset('uploads/' ~ article.picture) }}" alt="">
                 {% endif %}
             <h3>par {{ article.author}} dans <a href="{{ path('app_category_index',{id:article.category.getId}) }}">{{ article.category }}</a></h3>
-            <div class="">{{ article.description}}</div>  
             <div class="well">{{ article.content}}</div>    
         </article>
       

@@ -13,7 +13,8 @@ security:
             security: false
         main:
             #par défaut, y a un utilisateur connecté mais anonyme
-            anonymous: true 
+            anonymous: true
+            http_basic: true
             #le provider qui utilise app\entity\user
             provider: db
             #sur tout le site
@@ -29,14 +30,14 @@ security:
                 #route de la page de déco
                 path: app_security_logout
                 #redirection apres deco
-                target: app_index_index
+                target: app_security_login
              
     encoders:
             App\Entity\User:
                 algorithm: bcrypt
             # activate different ways to authenticate
 
-            # http_basic: true
+            
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
 
             # form_login: true
@@ -46,5 +47,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
        #tout ce qui commence par /admin, il faut avoir le role admin pour pouvoir y acceder
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
-       # - { path: ^/profile, roles: ROLE_USER }

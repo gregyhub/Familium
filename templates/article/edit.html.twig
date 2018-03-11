@@ -4,12 +4,11 @@
 {% block content %}
     <h1>Ajouter un artcile</h1>
     
-    <p><a href="{{ path("app_admin_article_index") }}">retour aux articles</a></p>
+    <p><a href="{{ path("app_article_index") }}">retour aux articles</a></p>
     
    {{ form_start(form) }} {# ouvre notre balise form #}
   
         {{ form_row(form.title) }} {# affiche le bloc input pour ce champ #}
-        {{ form_row(form.description) }}
         {{ form_row(form.category) }}
         {{ form_row(form.content) }}
         {{ form_row(form.picture) }}
@@ -20,7 +19,7 @@
         {% endif %}
         <div class="form-btn-group pull-right">
             <button type="submit" class="btn btn-primary">Enregistrer</button>
-            <a href="{{ path('app_admin_category_index') }}" class="btn btn-default">retour</a>
+            <a href="{{ path('app_article_index') }}" class="btn btn-default">retour</a>
         </div>
     {{ form_end(form) }} {# ferme notre balise form #}
 {% endblock %}

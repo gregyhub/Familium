@@ -30,12 +30,6 @@ class ArticleType extends AbstractType
                      'label' => 'Contenu'
                     ]
               )
-            ->add(  'description',
-                    TextareaType::class,
-                    [
-                     'label' => 'Descrption'
-                    ]
-              )
             ->add(  'category',
                      EntityType::class,
                     [
