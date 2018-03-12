@@ -14,21 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
      */
 class ArticleController extends Controller
 {
-    /**
-     * @Route("/article/{id}")
-     */
-    public function article(Article $article)
-    {
-        
-        return $this->render('article/article.html.twig', [
-           'article' => $article
-        ]);
-    }
-   
-    
+ 
 
      /**
-     * @Route("/")
+     * 
      */
     public function index()
     {
@@ -99,7 +88,7 @@ class ArticleController extends Controller
             //fait l'enregistement en bdd
             $em->flush(); //execute des transaction SQL. si tout passe va envoie en bdd, sinon fait un rollback
             $this->addFlash('success', 'l\'article '.$article->getTitle().' a été enregistrée'); //ajout du message flash
-            return $this->redirectToRoute('app_article_index'); //redirection
+            return $this->redirectToRoute('app_index_index'); //redirection
            } else{
               $this->addFlash('error', 'erreur'); //ajout du message flash
             }

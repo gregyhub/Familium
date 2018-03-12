@@ -19,6 +19,17 @@ class SuperArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, SuperArticle::class);
     }
 
+    public function findAllArticles(\App\Entity\Category $category=null){
+        $qb = $this->createQueryBuilder('a');
+        $qb ->orderBy('a.id', 'DESC');
+        if(!is_null($category)){
+            //$qb->andWhere('IDENTITY(a.category) = '. $category->getId());
+            $qb ->andWhere('IDENTITY(a.category) = :category')
+                ->setParameter('category', $category->getId());
+        }
+        return $qb->getQuery()->getResult();
+    }
+    
     /*
     public function findBySomething($value)
     {

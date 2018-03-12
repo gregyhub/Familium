@@ -5,7 +5,13 @@
     <h1>Accueil</h1>
     
     {% for article in last_articles %}
-         {% include 'article/preview.html.twig' with {"article": article} only %}
+        {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
+        
+        <article class="jumbotron">
+            <h3>{{ article.title}}</h3>
+            <p>par {{ article.author}}</p>            
+        </article>
+
         
     {% endfor %}
     
