@@ -1,4 +1,7 @@
 security:
+    #access_denied_url: /foo/error403
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # in_memory: { memory: ~ }  par défaut
@@ -14,7 +17,6 @@ security:
         main:
             #par défaut, y a un utilisateur connecté mais anonyme
             anonymous: true
-            http_basic: true
             #le provider qui utilise app\entity\user
             provider: db
             #sur tout le site
@@ -24,6 +26,7 @@ security:
                 login_path: app_security_login
                 #route du traitement d'authentification dans notre cas,sur la meme route
                 check_path: app_security_login
+                use_forward: true
                 #route quand on se log
                 default_target_path: app_index_index
             logout:
@@ -46,8 +49,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-       #tout ce qui commence par /admin, il faut avoir le role admin pour pouvoir y acceder
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+       #tout ce qui commence par /admin, il faut avoir le role admin pour pouvoir y acceder
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/, role: ROLE_USER}

@@ -51,7 +51,7 @@ class User implements UserInterface
      * @ORM\Column(length=20)
      * @var string
      */
-    private $role = 'ROLE_USER';
+    private $role = 'ROLE_WAIT';
     
     
     /**
