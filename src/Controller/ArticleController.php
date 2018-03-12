@@ -71,8 +71,6 @@ class ArticleController extends Controller
        //le formulaire a été envoyé ou NON ? si oui, il fait le mapping avec notre objet category et effectue les Setter à notre place
        //si le formulaire a été envoyé
        if($form->isSubmitted()){
-           dump($form);
-           dump($article);
            if($form->isValid()){
            //si il n'y a pas d'erreur de validation du formulaire > dans la class category
             $file =  $article->getPicture(); //équivalent à puisqu le formulaire est mappé sur article : $form['picture']->getData(); 

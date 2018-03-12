@@ -25,7 +25,7 @@ class SecurityController extends Controller
        if($form->isSubmitted()){
            //si il n'y a pas d'erreur de validation du formulaire > dans la class category
            if($form->isValid()){
-                $encoded = $encoder->encodePassword($user, 'mdp');
+                $encoded = $encoder->encodePassword($user, $user->getMdpclair());
                 $user->setMdp($encoded);
                 
                 $em = $this->getDoctrine()->getManager();

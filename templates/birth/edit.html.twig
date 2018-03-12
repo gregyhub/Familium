@@ -2,15 +2,20 @@
 
 
 {% block content %}
-    <h1>Ajouter un article</h1>
+    <h1>Annoncer une naissance</h1>
     
-    <p><a href="{{ path("app_article_index") }}">retour aux articles</a></p>
+    <p><a href="{{ path("app_event_index") }}">retour aux evenement</a></p>
     
    {{ form_start(form) }} {# ouvre notre balise form #}
   
         {{ form_row(form.title) }} {# affiche le bloc input pour ce champ #}
         {{ form_row(form.category) }}
         {{ form_row(form.content) }}
+        {{ form_row(form.firstname) }}
+        {{ form_row(form.birthdate) }}
+        {{ form_row(form.weight) }}
+        {{ form_row(form.height) }}
+        {{ form_row(form.birthhour) }}
         {{ form_row(form.picture) }}
         {# {% if is not null(original_image)%} #}
         {% if form.vars.value.picture is not null %} {# form.vars.value c'est notre entité lié au formulaire, donc l'article #}
@@ -19,7 +24,7 @@
         {% endif %}
         <div class="form-btn-group pull-right">
             <button type="submit" class="btn btn-primary">Enregistrer</button>
-            <a href="{{ path('app_article_index') }}" class="btn btn-default">retour</a>
+            <a href="{{ path('app_event_index') }}" class="btn btn-default">retour</a>
         </div>
     {{ form_end(form) }} {# ferme notre balise form #}
 {% endblock %}

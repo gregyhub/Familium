@@ -23,4 +23,21 @@ class Event extends SuperArticle
      */
     private $dateevent;
     
+    public function getLocalisation() {
+        return $this->localisation;
+    }
+
+    public function getDateevent() {
+        return $this->dateevent;
+    }
+
+    public function setLocalisation($localisation) {
+        $this->localisation = $localisation;
+        return $this;
+    }
+
+    public function setDateevent($dateevent) {
+        $this->dateevent = $dateevent;
+        return $this;
+    }
 }

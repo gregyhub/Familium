@@ -103,11 +103,11 @@ class User implements UserInterface
     private $mdpclair;
 
     public function getPrenom() {
-        return $this->prenom;
+        return ucfirst($this->prenom);
     }
 
     public function getNom() {
-        return $this->nom;
+        return strtoupper($this->nom);
     }
 
     public function getEmail() {
@@ -230,7 +230,7 @@ class User implements UserInterface
 
 
     public function getFullName(){
-        return $this->prenom. ' '.strtoupper($this->nom);
+        return $this->getPrenom(). ' '.$this->getNom();
     }
     
     public function eraseCredentials() {

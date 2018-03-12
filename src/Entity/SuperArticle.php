@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discriminator_column", type="string")
- * @ORM\DiscriminatorMap({"SuperArticle" = "SuperArticle", "Article" = "Article", "Event"="Event"})
+ * @ORM\DiscriminatorMap({"SuperArticle" = "SuperArticle", "Article" = "Article", "Event"="Event", "Birth"="Birth"})
  *
  */
 abstract class SuperArticle
@@ -72,7 +72,6 @@ abstract class SuperArticle
 
     public function __construct() {
         $this->datearticle = new \DateTime("now");
-        dump($this->datearticle);
     }
 
     public function getId() {
