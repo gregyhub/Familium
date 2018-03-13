@@ -3,12 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use App\Entity\Waitingroom;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-  
+  use Symfony\Component\HttpFoundation\Session\Session;
 /**
  * @Route("/user")
  */
@@ -24,7 +23,6 @@ class UserController extends Controller
             
             $em=$this->getDoctrine()->getManager();
             $user = $em->getRepository(User::class)->find($id);
-            //dump($this->getId());
             if($role=="enable"){
                 $user->setIsActive(true);
             }

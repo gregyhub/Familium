@@ -17,6 +17,7 @@ class SecurityController extends Controller
      */
     public function register(UserPasswordEncoderInterface $encoder, Request $request)
     {
+        if($this->isLogged()===true){ return $this->redirectToRoute('app_index_index'); }//redirection 
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request); //le formulaire traite la requete HTTP
@@ -38,8 +39,6 @@ class SecurityController extends Controller
                $this->addFlash('error', 'erreur'); //ajout du message flash
            }
        }
-        
-        
         return $this->render('security/register.html.twig', [
             'form' => $form->createView()
         ]);
@@ -49,6 +48,7 @@ class SecurityController extends Controller
      * @Route("/login")
      */
     public function login(AuthenticationUtils $authenticationUtils) {
+        if($this->isLogged()===true){ return $this->redirectToRoute('app_index_index'); }//redirection 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
         return $this->render('security/login.html.twig',
@@ -65,6 +65,13 @@ class SecurityController extends Controller
         
        //cette méthode n'est jamais executée car la route est défini dans le fichier security.yaml.
         //symfony intercepte cette route pour nous déconnecter et nous rediriger sur la page défini aussi sur la conf.
+    }
+    
+    private function isLogged(){
+        if($this->getUser()){
+            return true;
+        }
+        return false;
     }
 }
 
