@@ -18,7 +18,15 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, User::class);
     }
-
+    
+    public function findAllActive($active = 1)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.isActive = :active')->setParameter('active', $active)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     /*
     public function findBySomething($value)
     {

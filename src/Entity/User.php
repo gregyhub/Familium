@@ -4,14 +4,14 @@ namespace App\Entity; //vérifier l'unicité d'un champ en base
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;  //nécessaire car UserInterface contiend des méthodes dont l'encodage à besoin pour bosser.
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;  //nécessaire car UserInterface contiend des méthodes dont l'encodage à besoin pour bosser.
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="cette email existe déjà")
  */
-class User implements UserInterface
+class User implements AdvancedUserInterface
 {
     /**
      * @ORM\Id
@@ -51,7 +51,7 @@ class User implements UserInterface
      * @ORM\Column(length=20)
      * @var string
      */
-    private $role = 'ROLE_WAIT';
+    private $role = 'ROLE_USER';
     
     
     /**
@@ -101,7 +101,13 @@ class User implements UserInterface
      * @Assert\NotBlank()
      */
     private $mdpclair;
-
+    
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive=false;
+    
+    
     public function getPrenom() {
         return ucfirst($this->prenom);
     }
@@ -233,6 +239,16 @@ class User implements UserInterface
         return $this->getPrenom(). ' '.$this->getNom();
     }
     
+    public function getIsActive() {
+        return $this->isActive;
+    }
+
+    public function setIsActive($isActive) {
+        $this->isActive = $isActive;
+        return $this;
+    }
+
+    
     public function eraseCredentials() {
         //si on veut enlever une partie des droit à un user, dans cet exemple on laisse vide
     }
@@ -254,6 +270,38 @@ class User implements UserInterface
     public function __toString() {
         return $this->getFullName();
     }
-    
-}
+   
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
 
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->isActive;
+    }
+
+ // serialize and unserialize must be updated - see below
+    public function serialize()
+    {
+        return serialize(array(
+            $this->isActive,
+        ));
+    }
+    public function unserialize($serialized)
+    {
+        list (
+            $this->isActive,
+        ) = unserialize($serialized);
+    }
+}

@@ -22,6 +22,7 @@
             <th>ville</th>
             <th>pays</th>
             <th>role</th>
+            <th>Actif</th>
         </tr>
         
     {% for user in users %}
@@ -42,9 +43,46 @@
             {% endif %}
             {% if app.user.id == user.id %}
             <td>{{ user.role }}</td>
+            <td>Membre actif</td>
             {% else %}
-            <td><a title="passer le membre {{ role }}" href="{{ path('app_admin_user_liste', {'id':user.id, 'role': role}) }}">{{ user.role }}</a></td>
+                <td><a class="btn btn-primary" title="passer le membre {{ role }}" href="{{ path('app_admin_user_liste', {'id':user.id, 'role': role}) }}">{{ user.role }}</a></td>
+                <td><a class="btn btn-primary" title="confirmer le membre" href="{{ path('app_admin_user_liste', {'id':user.id, 'role': 'disable'}) }}">Désactiver</a></td>
             {% endif %}
+        </tr> 
+    {% endfor %}
+    
+    </table>
+    
+    
+    
+     <table class="table">
+        <tr>
+            <th>id</th>
+            <th>membre</th>
+            <th>email</th>
+            <th>téléphone</th>
+            <th>date de naissance</th>
+            <th>adresse</th>
+            <th>cp</th>
+            <th>ville</th>
+            <th>pays</th>
+            <th>role</th>
+            <th>Actif</th>
+        </tr>
+        
+    {% for user_inactive in users_inacttive %}
+        <tr>
+            <td>{{ user_inactive.id }}</td>
+            <td>{{ user_inactive.getFullname }}</td>
+            <td>{{ user_inactive.email }}</td>
+            <td>{{ user_inactive.telephone }}</td>
+            <td>{{ user_inactive.datenaissance|date('d/m/Y') }}</td>
+            <td>{{ user_inactive.adresse }}</td>
+            <td>{{ user_inactive.cp }}</td>
+            <td>{{ user_inactive.ville}}</td>
+            <td>{{ user_inactive.pays }}</td>
+            <td>{{ user_inactive.role }}</td>
+            <td><a class="btn btn-primary" title="confirmer le membre" href="{{ path('app_admin_user_liste', {'id':user_inactive.id, 'role': 'enable'}) }}">Confirmer</a></td>
         </tr> 
     {% endfor %}
     

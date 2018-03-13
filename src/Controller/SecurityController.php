@@ -25,15 +25,13 @@ class SecurityController extends Controller
        if($form->isSubmitted()){
            //si il n'y a pas d'erreur de validation du formulaire > dans la class category
            if($form->isValid()){
-                $encoded = $encoder->encodePassword($user, $user->getMdpclair());
-                $user->setMdp($encoded);
+               $encoded = $encoder->encodePassword($user, $user->getMdpclair());
+               $user->setMdp($encoded);
                 
-                $em = $this->getDoctrine()->getManager();
-               //prépare l'enregistement en bdd
-               $em->persist($user); //on peut faire plusieurs persist puis 1 seul flush a la fin
-               //fait l'enregistement en bdd
-               $em->flush(); //execute des transaction SQL. si tout passe va envoie en bdd, sinon fait un rollback
-               $this->addFlash('success', 'Bravo '.$user->getFullName().', votre compte a été crée avec succès !'); //ajout du message flash
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($user); 
+               $em->flush();
+               $this->addFlash('success', 'Bravo '.$user->getFullName().', votre compte a été crée mais vous devez attendre la validation d\'un administrateur !'); //ajout du message flash
                return $this->redirectToRoute('app_index_index'); //redirection
            }
            else{

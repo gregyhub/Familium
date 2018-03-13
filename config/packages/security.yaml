@@ -26,7 +26,6 @@ security:
                 login_path: app_security_login
                 #route du traitement d'authentification dans notre cas,sur la meme route
                 check_path: app_security_login
-                use_forward: true
                 #route quand on se log
                 default_target_path: app_index_index
             logout:
