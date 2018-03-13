@@ -3,7 +3,7 @@
 
 
 {% block content %}
-    <h1>Inscription</h1>
+    <h1> Modification profil </h1>
     
     {{ form_start(form) }} {# ouvre notre balise form #}
   
@@ -19,7 +19,7 @@
         {{ form_row(form.mdpclair) }}
         <div class="form-btn-group pull-right">
             <button type="submit" class="btn btn-primary">Enregistrer</button>
-            <a href="{{ path('app_security_login') }}" class="btn btn-default">retour</a>
+            <a href="{{ path('app_user_view') }}" class="btn btn-default">retour</a>
         </div>
     {{ form_end(form) }} {# ferme notre balise form #}
 {% endblock %}

@@ -18,6 +18,7 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->controller = $options['controller'];
         $builder
             ->add(  'nom',
                     TextType::class,
@@ -72,8 +73,9 @@ class UserType extends AbstractType
                     [
                      'label' => 'Pays'
                     ]
-              )
-            ->add(  'mdpclair',
+              );
+        if($this->controller == 'security'){
+            $builder->add(  'mdpclair',
                     RepeatedType::class,  //2 champs qui doivent être identique
                     [
                         //de type password
@@ -81,8 +83,18 @@ class UserType extends AbstractType
                      'first_options' => ['label' => 'Mot de passe'],
                      'second_options' => ['label' => 'Confirmation du mot de passe'],
                     ]
-              )
-        ;
+              );
+        }
+        elseif($this->controller == 'user'){
+            $builder->add( 'mdpclair',
+                    PasswordType::class,
+                    [
+                     'label' => 'Saississez votre mot de passe'
+                    ]
+              );
+        }
+            
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -90,6 +102,7 @@ class UserType extends AbstractType
         $resolver->setDefaults([
             // uncomment if you want to bind to a class
             'data_class' => User::class,
+            'controller' => null,
         ]);
     }
 }
