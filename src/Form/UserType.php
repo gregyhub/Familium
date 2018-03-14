@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -21,16 +22,25 @@ class UserType extends AbstractType
     {
         $this->controller = $options['controller'];
         $builder
-            ->add(  'nom',
+            ->add(  'lastname',
                     TextType::class,
                     [
                          'label' => 'Nom'
                     ]
                   )
-            ->add(  'prenom',
+            ->add(  'firstname',
                      TextType::class,
                     [
                      'label' => 'Prénom'
+                    ]
+              )
+            ->add(  'gender',
+                    ChoiceType::class,
+                    [
+                        'label' => 'sexe du bébé',
+                        'choices' => ['Homme' => 'm', 'Femme'=>'f'],
+                        'expanded' => true,
+                        'multiple' => false
                     ]
               )
             ->add(  'email',
@@ -39,19 +49,19 @@ class UserType extends AbstractType
                      'label' => 'Email'
                     ]
               )
-            ->add(  'telephone',
+            ->add(  'phone',
                     TelType::class,
                     [
                      'label' => 'Télephone'
                     ]
               )
-            ->add(  'datenaissance',
+            ->add(  'birthdate',
                     BirthdayType::class,
                     [
                      'label' => 'Date de naissance'
                     ]
               )
-            ->add(  'adresse',
+            ->add(  'adress',
                      TextType::class,
                     [
                      'label' => 'Adresse'
@@ -63,13 +73,13 @@ class UserType extends AbstractType
                      'label' => 'Code Postal'
                     ]
               )
-            ->add(  'ville',
+            ->add(  'city',
                      TextType::class,
                     [
                      'label' => 'Ville'
                     ]
               )
-            ->add(  'pays',
+            ->add(  'country',
                     CountryType::class,
                     [
                      'label' => 'Pays'
@@ -83,7 +93,7 @@ class UserType extends AbstractType
             );
         
         if($this->controller == 'security'){
-            $builder->add(  'mdpclair',
+            $builder->add(  'plainpassword',
                     RepeatedType::class,  //2 champs qui doivent être identique
                     [
                         //de type password
@@ -94,7 +104,7 @@ class UserType extends AbstractType
               );
         }
         elseif($this->controller == 'user'){
-            $builder->add( 'mdpclair',
+            $builder->add( 'plainpassword',
                     PasswordType::class,
                     [
                      'label' => 'Saississez votre mot de passe'

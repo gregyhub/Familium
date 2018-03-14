@@ -25,13 +25,13 @@ class User implements AdvancedUserInterface
      * @Assert\NotBlank()
      * @var string
      */
-    private $prenom;
+    private $firstname;
     /**
      * @ORM\Column()
      * @Assert\NotBlank()
      * @var string
      */
-    private $nom;
+    private $lastname;
 
     /**
      * @ORM\Column(unique=true)
@@ -45,7 +45,7 @@ class User implements AdvancedUserInterface
      * @ORM\Column()
      * @var string
      */
-    private $mdp;
+    private $password;
 
     /**
      * @ORM\Column(length=20)
@@ -58,13 +58,20 @@ class User implements AdvancedUserInterface
      * @ORM\Column(type="date")
      * @var string
      */
-    private $datenaissance;
+    private $birthdate;
+    
+    
+    /**
+     * @ORM\Column(type="string", columnDefinition="ENUM('m', 'f')")
+     * @Assert\NotBlank()
+     */
+    private $gender;
     
     /**
      * @ORM\Column()
      * @var string
      */
-    private $telephone;
+    private $phone;
     
     /**
      * @ORM\Column(nullable=true)
@@ -77,7 +84,7 @@ class User implements AdvancedUserInterface
      * @ORM\Column()
      * @var string
      */
-    private $adresse;
+    private $adress;
     
     /**
      * @ORM\Column(type="integer")
@@ -89,20 +96,20 @@ class User implements AdvancedUserInterface
      * @ORM\Column()
      * @var string
      */
-    private $ville;
+    private $city;
             
     /**
      * @ORM\Column()
      * @var string
      */
-    private $pays;
+    private $country;
     
     /**
      * @var string
      * @Assert\NotBlank()
      */
     
-    private $mdpclair;
+    private $plainpassword;
     
     /**
      * @ORM\Column(name="is_active", type="boolean")
@@ -110,68 +117,69 @@ class User implements AdvancedUserInterface
     private $isActive=false;
     
     
-    public function getPrenom() {
-        return ucfirst($this->prenom);
+    
+    public function getFirstname() {
+        return $this->firstname;
     }
 
-    public function getNom() {
-        return strtoupper($this->nom);
+    public function getLastname() {
+        return $this->lastname;
     }
 
     public function getEmail() {
         return $this->email;
     }
 
-    public function getMdp() {
-        return $this->mdp;
-    }
     public function getPassword() {
-        return $this->mdp;
+        return $this->password;
     }
 
     public function getRole() {
         return $this->role;
     }
 
-    public function getDatenaissance() {
-        return $this->datenaissance;
+    public function getBirthdate() {
+        return $this->birthdate;
     }
 
-    public function getTelephone() {
-        return $this->telephone;
+    public function getGender() {
+        return $this->gender;
+    }
+
+    public function getPhone() {
+        return $this->phone;
     }
 
     public function getAvatar() {
         return $this->avatar;
     }
 
-    public function getAdresse() {
-        return $this->adresse;
+    public function getAdress() {
+        return $this->adress;
     }
 
     public function getCp() {
         return $this->cp;
     }
-
-    public function getVille() {
-        return $this->ville;
+    public function getCity() {
+        return $this->city;
     }
 
-    public function getPays() {
-        return $this->pays;
+    public function getPlainpassword() {
+        return $this->plainpassword;
     }
 
-    public function getMdpclair() {
-        return $this->mdpclair;
+        public function getCountry() {
+        return $this->country;
     }
 
-    public function setPrenom($prenom) {
-        $this->prenom = $prenom;
+    public function setFirstname($firstname) {
+        $this->firstname = $firstname;
         return $this;
     }
 
-    public function setNom($nom) {
-        $this->nom = $nom;
+    public function setLastname($lastname) {
+        $this->lastname = $lastname;
         return $this;
     }
 
@@ -180,8 +188,8 @@ class User implements AdvancedUserInterface
         return $this;
     }
 
-    public function setMdp($mdp) {
-        $this->mdp = $mdp;
+    public function setPassword($password) {
+        $this->password = $password;
         return $this;
     }
 
@@ -190,13 +198,18 @@ class User implements AdvancedUserInterface
         return $this;
     }
 
-    public function setDatenaissance($datenaissance) {
-        $this->datenaissance = $datenaissance;
+    public function setBirthdate($birthdate) {
+        $this->birthdate = $birthdate;
         return $this;
     }
 
-    public function setTelephone($telephone) {
-        $this->telephone = $telephone;
+    public function setGender($gender) {
+        $this->gender = $gender;
+        return $this;
+    }
+
+    public function setPhone($phone) {
+        $this->phone = $phone;
         return $this;
     }
 
@@ -205,8 +218,8 @@ class User implements AdvancedUserInterface
         return $this;
     }
 
-    public function setAdresse($adresse) {
-        $this->adresse = $adresse;
+    public function setAdress($adress) {
+        $this->adress = $adress;
         return $this;
     }
 
@@ -215,30 +228,26 @@ class User implements AdvancedUserInterface
         return $this;
     }
 
-    public function setVille($ville) {
-        $this->ville = $ville;
+    public function setCountry($country) {
+        $this->country = $country;
+        return $this;
+    }
+    public function setCity($city) {
+        $this->city = $city;
         return $this;
     }
 
-    public function setPays($pays) {
-        $this->pays = $pays;
+    public function setPlainpassword($plainpassword) {
+        $this->plainpassword = $plainpassword;
         return $this;
     }
 
-    public function setMdpclair($mdpclair) {
-        $this->mdpclair = $mdpclair;
-        return $this;
-    }
-
-        
-    
     public function getId() {
         return $this->id;
     }
 
-
     public function getFullName(){
-        return $this->getPrenom(). ' '.$this->getNom();
+        return $this->getFirstname(). ' '.$this->getLastname();
     }
     
     public function getIsActive() {

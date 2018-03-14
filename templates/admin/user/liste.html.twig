@@ -30,12 +30,12 @@
             <td>{{ user.id }}</td>
             <td>{{ user.getFullname }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.telephone }}</td>
-            <td>{{ user.datenaissance|date('d/m/Y') }}</td>
-            <td>{{ user.adresse }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.birthdate|date('d/m/Y') }}</td>
+            <td>{{ user.adress }}</td>
             <td>{{ user.cp }}</td>
-            <td>{{ user.ville}}</td>
-            <td>{{ user.pays }}</td>
+            <td>{{ user.city}}</td>
+            <td>{{ user.country }}</td>
             {% if user.role == 'ROLE_ADMIN' %}
                 {%  set role='ROLE_USER'  %}
             {% else %}
@@ -75,12 +75,12 @@
             <td>{{ user_inactive.id }}</td>
             <td>{{ user_inactive.getFullname }}</td>
             <td>{{ user_inactive.email }}</td>
-            <td>{{ user_inactive.telephone }}</td>
-            <td>{{ user_inactive.datenaissance|date('d/m/Y') }}</td>
-            <td>{{ user_inactive.adresse }}</td>
+            <td>{{ user_inactive.phone }}</td>
+            <td>{{ user_inactive.birthdate|date('d/m/Y') }}</td>
+            <td>{{ user_inactive.adress }}</td>
             <td>{{ user_inactive.cp }}</td>
-            <td>{{ user_inactive.ville}}</td>
-            <td>{{ user_inactive.pays }}</td>
+            <td>{{ user_inactive.city}}</td>
+            <td>{{ user_inactive.country }}</td>
             <td>{{ user_inactive.role }}</td>
             <td><a class="btn btn-primary" title="confirmer le membre" href="{{ path('app_admin_user_liste', {'id':user_inactive.id, 'role': 'enable'}) }}">Confirmer</a></td>
         </tr> 

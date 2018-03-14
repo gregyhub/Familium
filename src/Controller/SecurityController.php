@@ -25,28 +25,32 @@ class SecurityController extends Controller
        //si le formulaire a été envoyé
        if($form->isSubmitted()){
            //si il n'y a pas d'erreur de validation du formulaire > dans la class category
+           dump($user);
            if($form->isValid()){
-               
                $avatar =  $user->getAvatar(); //équivalent à puisqu le formulaire est mappé sur article : $form['picture']->getData(); 
 
                if(!is_null($avatar)){
                     $avatarName = uniqid().'.'.$avatar->guessExtension();
                     $user->setAvatar($avatarName);
                     $avatar->move($this->getParameter('img_directory'), $avatarName);
+                }else{
+                    if($user->getGender() == "m"){
+                        $user->setAvatar('default_avatar_man.jpg');
+                    }else{
+                        $user->setAvatar('default_avatar_woman.jpg');
+                    }
                 }
                
-                $encoded = $encoder->encodePassword($user, $user->getMdpclair());
-                $user->setMdp($encoded);
+                $encoded = $encoder->encodePassword($user, $user->getPlainpassword());
+                $user->setPassword($encoded);
                 $em = $this->getDoctrine()->getManager();
                //prépare l'enregistement en bdd
                $em->persist($user); //on peut faire plusieurs persist puis 1 seul flush a la fin
                //fait l'enregistement en bdd
                $em->flush(); //execute des transaction SQL. si tout passe va envoie en bdd, sinon fait un rollback
                
-               
-               
                $this->addFlash('success', 'Bravo '.$user->getFullName().', votre compte a été crée avec succès !'); //ajout du message flash
-               ///return $this->redirectToRoute('app_security_login'); //redirection
+               return $this->redirectToRoute('app_security_login'); //redirection
            }
            else{
                $this->addFlash('error', 'erreur'); //ajout du message flash

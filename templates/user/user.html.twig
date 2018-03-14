@@ -69,42 +69,41 @@
                     <tbody>
                         <tr>
                             <td>Nom:</td>
-                            <td>{{ user.nom }}</td>
+                            <td>{{ user.lastname }}</td>
                         </tr>
                         <tr>
                             <td>Prenom:</td>
-                            <td>{{ user.prenom }}</td>
+                            <td>{{ user.firstname }}</td>
                         </tr>
                         <tr>
                             <td>datenaissance</td>
-                            <td>{{ user.telephone|date('d/m/Y') }}</td>
+                            <td>{{ user.birthdate|date('d/m/Y') }}</td>
                         </tr>
                         <tr>
                             <td>telephone</td>
-                            <td>    {{ user.telephone }}</td>
+                            <td>    {{ user.phone }}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td><a href="mailto:info@support.com">{{user.email}}</a></td>
-
+                            <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+                        </tr>
                         <tr>
                             <td>adresse</td>
-                            <td>{{ user.adresse }}<br>
-                            </td>
+                            <td>{{ user.adress }}</td>
                         </tr>
                         <tr>
                             <td>cp</td>
-                            <td>{{ user.cp }}<br>
+                            <td>{{ user.cp }} <br>
                             </td>
                         </tr>
                         <tr>
                             <td>ville</td>
-                            <td>{{ user.ville }}<br>
+                            <td>{{ user.city }}<br>
                             </td>
                         </tr>
                         <tr>
                             <td>pays</td>
-                            <td>{{ user.pays }}<br>
+                            <td>{{ user.country }}<br>
                             </td>
                         </tr>
                     </tbody>

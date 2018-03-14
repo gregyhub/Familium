@@ -42,11 +42,9 @@ class UserController extends Controller
        //le formulaire a été envoyé ou NON ? si oui, il fait le mapping avec notre objet category et effectue les Setter à notre place
        //si le formulaire a été envoyé
        if($form->isSubmitted()){
-           //si il n'y a pas d'erreur de validation du formulaire > dans la class category
            if($form->isValid()){
                
                $avatar = $user->getAvatar();
-               dump($user);
                if(!is_null($avatar)){
                     $avatarname= uniqid().'.'.$avatar->guessExtension();
                     $user->setAvatar($avatarname);
