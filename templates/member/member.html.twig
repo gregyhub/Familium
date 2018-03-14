@@ -9,10 +9,10 @@
         {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
         
         <div class="jumbotron">
-            
+            <a href="{{ path("app_member_view", {"id":member.id}) }}">voir le profil</a>
             <h3>{{ member.getFullname}}</h3>
             <h3> {{ member.email}}</h3>
-            <h3> {{ member.telephone}}</h3>
+            <h3> {{ member.phone}}</h3>
             
         </div>
 
