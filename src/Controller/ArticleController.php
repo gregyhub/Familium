@@ -34,20 +34,21 @@ class ArticleController extends Controller
     public function edit(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-       $originalImage = null;
-       if(is_null($id)){
+        $originalImage = null;
+        
+        if(is_null($id)){
            $article = new Article(); //on instancie notre entité category
            //l'auteur de l'article est l'utilisateur connecté
            $article->setAuthor($this->getUser());
-       }else{
-           //$article = $em->getRepository(Article::class)->find($id);
-           $article = $em->find(Article::class, $id);
-           if(!is_null($article->getPicture())){
-               $originalImage = $article->getPicture();
-               $article->setPicture(
+        }else{
+            //$article = $em->getRepository(Article::class)->find($id);
+            $article = $em->find(Article::class, $id);
+            if(!is_null($article->getPicture())){
+                $originalImage = $article->getPicture();
+                $article->setPicture(
                 new File($this->getParameter('img_directory').'/'.$article->getPicture())
             );
-               dump($article->getPicture());
+                dump($article->getPicture());
            }
            
        }

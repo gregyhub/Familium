@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -18,6 +19,7 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->controller = $options['controller'];
         $builder
             ->add(  'nom',
                     TextType::class,
@@ -72,8 +74,16 @@ class UserType extends AbstractType
                     [
                      'label' => 'Pays'
                     ]
-              )
-            ->add(  'mdpclair',
+            )->add(  'avatar',
+                    FileType::class,
+                    [
+                    'label'    => 'avatar',
+                    'required' => false
+                    ]
+            );
+        
+        if($this->controller == 'security'){
+            $builder->add(  'mdpclair',
                     RepeatedType::class,  //2 champs qui doivent être identique
                     [
                         //de type password
@@ -81,8 +91,18 @@ class UserType extends AbstractType
                      'first_options' => ['label' => 'Mot de passe'],
                      'second_options' => ['label' => 'Confirmation du mot de passe'],
                     ]
-              )
-        ;
+              );
+        }
+        elseif($this->controller == 'user'){
+            $builder->add( 'mdpclair',
+                    PasswordType::class,
+                    [
+                     'label' => 'Saississez votre mot de passe'
+                    ]
+              );
+        }
+            
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -90,6 +110,7 @@ class UserType extends AbstractType
         $resolver->setDefaults([
             // uncomment if you want to bind to a class
             'data_class' => User::class,
+            'controller' => null,
         ]);
     }
 }

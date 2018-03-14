@@ -67,10 +67,11 @@ class User implements AdvancedUserInterface
     private $telephone;
     
     /**
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
+     * @Assert\Image()
      * @var string
      */
-    private $avatar = 'default_avatar.jpg';
+    private $avatar;
     
     /**
      * @ORM\Column()
@@ -100,6 +101,7 @@ class User implements AdvancedUserInterface
      * @var string
      * @Assert\NotBlank()
      */
+    
     private $mdpclair;
     
     /**

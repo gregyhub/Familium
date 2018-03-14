@@ -1,0 +1,118 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('style/style.css') }}"/> {# on donne a asset le chemin depui le rep public. #}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+      <script>
+       $(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('button').click(function(e) {
+        e.preventDefault();
+        alert("This is a demo.\n :-)");
+    });
+});
+   </script>
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+                <a href="{{ path('app_user_edit') }}" >Edit Profile</a> <br>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 toppad" >
+                <div class="panel panel-info ">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Nom  Prenom</h3>
+                    </div>
+                </div>
+                <div class="panel-body">
+        <div class="row">
+            <div class="col-md-5 col-lg-5 " align="center"> 
+                <img alt="User Pic" src="{{ asset('avatars/' ~ user.avatar ) }}" class="img-rounded img-responsive"> 
+            </div>
+
+            <div class=" col-md-7 col-lg-7 "> 
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td>Nom:</td>
+                            <td>{{ user.nom }}</td>
+                        </tr>
+                        <tr>
+                            <td>Prenom:</td>
+                            <td>{{ user.prenom }}</td>
+                        </tr>
+                        <tr>
+                            <td>datenaissance</td>
+                            <td>{{ user.telephone|date('d/m/Y') }}</td>
+                        </tr>
+                        <tr>
+                            <td>telephone</td>
+                            <td>    {{ user.telephone }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><a href="mailto:info@support.com">{{user.email}}</a></td>
+
+                        <tr>
+                            <td>adresse</td>
+                            <td>{{ user.adresse }}<br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>cp</td>
+                            <td>{{ user.cp }}<br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ville</td>
+                            <td>{{ user.ville }}<br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>pays</td>
+                            <td>{{ user.pays }}<br>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+                </div>
+            </div>                            
+        </div>                                        
+    </div>
+{% endblock %}
