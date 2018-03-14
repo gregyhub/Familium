@@ -15,7 +15,6 @@ class IndexController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
         $lastArticles = $repo->findLatest(3);
-        dump($lastArticles);
         return $this->render('index/index.html.twig',
                 [
                     'last_articles' => $lastArticles

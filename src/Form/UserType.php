@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -73,7 +74,14 @@ class UserType extends AbstractType
                     [
                      'label' => 'Pays'
                     ]
-              );
+            )->add(  'avatar',
+                    FileType::class,
+                    [
+                    'label'    => 'avatar',
+                    'required' => false
+                    ]
+            );
+        
         if($this->controller == 'security'){
             $builder->add(  'mdpclair',
                     RepeatedType::class,  //2 champs qui doivent être identique
