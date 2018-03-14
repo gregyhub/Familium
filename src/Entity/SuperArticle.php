@@ -68,8 +68,7 @@ abstract class SuperArticle
      */
     protected $picture;
     
-     
-
+    
     public function __construct() {
         $this->datearticle = new \DateTime("now");
     }
@@ -124,15 +123,12 @@ abstract class SuperArticle
     }
     
     public function getDatarticle() {
-        return $this->datepost;
+        return $this->datearticle;
     }
 
-    public function setDatearticle($datepost) {
-        $this->datepost = $datepost;
+    public function setDatearticle($datearticle) {
+        $this->datearticle = $datearticle;
         return $this;
     }
-
-
-
 
 }

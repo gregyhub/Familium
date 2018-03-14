@@ -1,0 +1,16 @@
+
+    
+<div class="comment" data="{{ id_article }}">
+    <ul class="list-group">
+    {% for comment in comments %} 
+        <li class="list-group-item panel panel-info">
+            <h6 class="lead panel-heading">{{ comment.author }}</h6>
+            <p>{{ comment.comment }}</p>
+            <p class="text-right"><small>Commentaire laissé le : {{ comment.datecomment|date('d/m/Y') }} à {{ comment.datecomment|date('H:i') }}</small></p>
+        </li>
+    {% endfor %}     
+    </ul>
+    
+</div>
+    
+

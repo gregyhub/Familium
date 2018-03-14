@@ -9,9 +9,15 @@
         
         <article class="jumbotron">
             <h3>{{ article.title}}</h3>
-            <p>par {{ article.author}}</p>            
+            <p>par {{ article.author}}</p>       
+            <p>{{ article.content}}</p>
+            <button class="btn btn-primary btn-xs showcomment" data="{{ article.id }}">afficher les commentaires</button>
+            {{ render(controller('App\\Controller\\CommentController::listComments', {'id':article.id})) }} 
+            {#formulaire pour les commentaires #}
+            <form action="{{ path('app_comment_insert', {"id":article.id}) }}" method="post">
+            {{ render(controller('App\\Controller\\CommentController::newComment')) }} 
+            </form>
         </article>
-
         
     {% endfor %}
     
@@ -19,5 +25,5 @@
 
 {% block javascripts %}
     {{ parent() }} {# permet de garder le block tel qu'il est défini dans layout et d'y ajouter notre contenu spécifiqu / sinon on perd les script JQ et BootStrap #}
-    <script>console.log('mon js');</script>
+    <script src="{{ asset('JS/index.js') }}"></script>
 {% endblock %}

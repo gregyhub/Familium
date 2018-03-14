@@ -1,3 +1,30 @@
 .navbar-inverse{
     margin-bottom: 0;
 }
+
+.comment{
+    display: none;
+}
+
+.comment .list-group-item{
+    padding: 0;
+}
+.comment p{
+    margin-bottom: 0;
+}
+.comment small{
+    font-size: 12px;
+    margin-right: 2px;
+}
+.comment h6{
+    font-size: 15px;
+    padding: 5px 15px;
+    margin-top: 0;
+}
+.comment p{
+    font-size: 14px;
+    margin-left: 10px;
+}
+.showcomment{
+    margin-bottom:5px;
+}
