@@ -24,7 +24,6 @@ class IndexController extends Controller
         foreach ($allArticles as $article){
             $article->setNbComment($repoComments->countComments($article->getId()));
         }
-        dump($allArticles);
         return $this->render('index/index.html.twig',
                 [
                     'last_articles' => $allArticles
