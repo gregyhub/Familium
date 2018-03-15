@@ -17,11 +17,17 @@ class IndexController extends Controller
     {
        /* $repo = $this->getDoctrine()->getRepository(Article::class);
         $lastArticles = $repo->findLatest(3);*/
-        $repo = $this->getDoctrine()->getRepository(SuperArticle::class);
-        $lastArticles = $repo->findAllArticles();
+        $repoArticles = $this->getDoctrine()->getRepository(SuperArticle::class);
+        $allArticles = $repoArticles->findAllArticles();
+        $repoComments = $this->getDoctrine()->getRepository(\App\Entity\Comment::class);
+        
+        foreach ($allArticles as $article){
+            $article->setNbComment($repoComments->countComments($article->getId()));
+        }
+        dump($allArticles);
         return $this->render('index/index.html.twig',
                 [
-                    'last_articles' => $lastArticles
+                    'last_articles' => $allArticles
                 ]
                 );
     }

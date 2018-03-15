@@ -1,0 +1,10 @@
+
+<div class="btn-group">
+    <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      par {{ member.getFullname}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="{{ path("app_member_view", {"id":member.id}) }}">voir profil</a></li>
+        <li><a href="">écrire un message</a></li>
+    </ul>
+</div>

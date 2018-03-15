@@ -27,7 +27,6 @@ class CommentController extends Controller
     public function listComments($id){
         $em = $this->getDoctrine()->getRepository(Comment::class);
         $comments = $em->findBy(['article'=>$id]);
-        
         return $this->render('comment/list.html.twig', [
             'comments' => $comments,
              'id_article' => $id

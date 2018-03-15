@@ -9,10 +9,20 @@
         
         <article class="jumbotron">
             <h3>{{ article.title}}</h3>
-            <p>par {{ article.author}}</p>       
+            <p></p>
+            
+           
+             {{ render(controller('App\\Controller\\MemberController::getButton', {'id':article.author.id})) }} 
+            
+            
             <p>{{ article.content}}</p>
-            <button class="btn btn-primary btn-xs showcomment" data="{{ article.id }}">afficher les commentaires</button>
+            {% if article.nbcomment > 0 %}
+            <div>
+                <button class="btn btn-primary btn-xs togglec showcomment" data="{{ article.id }}">afficher les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+                <button class="btn btn-primary btn-xs togglec hidecomment" data="{{ article.id }}">masquer les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+            </div>
             {{ render(controller('App\\Controller\\CommentController::listComments', {'id':article.id})) }} 
+            {% endif %}
             {#formulaire pour les commentaires #}
             <form action="{{ path('app_comment_insert', {"id":article.id}) }}" method="post">
             {{ render(controller('App\\Controller\\CommentController::newComment')) }} 

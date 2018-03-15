@@ -69,11 +69,21 @@ abstract class SuperArticle
     protected $picture;
     
     
+    protected $nbComment;
+    
     public function __construct() {
         $this->datearticle = new \DateTime("now");
     }
+    public function getNbComment() {
+        return $this->nbComment;
+    }
 
-    public function getId() {
+    public function setNbComment($nbComment) {
+        $this->nbComment = $nbComment[0][1];
+        return $this;
+    }
+
+        public function getId() {
         return $this->id;
     }
 

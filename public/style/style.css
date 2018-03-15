@@ -62,3 +62,7 @@
 .showcomment{
     margin-bottom:5px;
 }
+.hidecomment{
+    margin-bottom:5px;
+    display:none;
+}

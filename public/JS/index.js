@@ -1,12 +1,11 @@
 $(function() {
     
-    $('.showcomment').on('click', function(){
-        $(this).html('afficher les commentaires');
-        if($(this).next().css('display') == 'none'){
-            $(this).html('masquer les commentaires');
-        }
+    $('.togglec').on('click', function(){
+        $('.showcomment').toggle();
+        $('.hidecomment').toggle();
+        
         //idArticle = $(this).attr('data');
-        $(this).next().toggle('slow');
+        $(this).parent().next().toggle('slow');
         
     }); //fin de l'event click
 
