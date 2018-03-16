@@ -61,19 +61,12 @@ TABLE album
 	id album
 	id membre (FK)
 	titre
-	description
 	visibilité
 	date modif
 
 TABLE photos
 	id photo
-	titre
-	description
 	nom photo
-
-TABLE album-photo
-	id album-photo
-	id photo (FK)
 	id album (FK)
 
 
