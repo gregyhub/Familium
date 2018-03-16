@@ -132,7 +132,7 @@ abstract class SuperArticle
         return $this;
     }
     
-    public function getDatarticle() {
+    public function getDatearticle() {
         return $this->datearticle;
     }
 

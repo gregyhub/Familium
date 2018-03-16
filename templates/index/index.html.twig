@@ -2,33 +2,38 @@
 
 
 {% block content %}
-    <h1>Accueil</h1>
+    <h1>Familium</h1>
+        <div class="row">
+            {% include 'aside.html.twig' %}
+            <div class="col-md-8">
     
-    {% for article in last_articles %}
-        {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
-        
-        <article class="jumbotron">
-            <h3>{{ article.title}}</h3>
-            
-      
-            <p>{{ render(controller('App\\Controller\\MemberController::getButton', {'id':article.author.id})) }}</p> 
-            
-            
-            <p>{{ article.content}}</p>
-            {% if article.nbcomment > 0 %}
-            <div>
-                <button class="btn btn-primary btn-xs togglec showcomment" data="{{ article.id }}">afficher les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
-                <button class="btn btn-primary btn-xs togglec hidecomment" data="{{ article.id }}">masquer les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
-            </div>
-            {{ render(controller('App\\Controller\\CommentController::listComments', {'id':article.id})) }} 
-            {% endif %}
-            {#formulaire pour les commentaires #}
-            <form action="{{ path('app_comment_insert', {"id":article.id}) }}" method="post">
-            {{ render(controller('App\\Controller\\CommentController::newComment')) }} 
-            </form>
-        </article>
-        
-    {% endfor %}
+            {% for article in last_articles %}
+                {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
+
+                <article class="jumbotron">
+                    <h3>{{ article.title}}</h3>
+
+
+                    <p>{{ render(controller('App\\Controller\\MemberController::getButton', {'id':article.author.id})) }}</p> 
+
+
+                    <p>{{ article.content}}</p>
+                    {% if article.nbcomment > 0 %}
+                    <div>
+                        <button class="btn btn-primary btn-xs togglec showcomment" data="{{ article.id }}">afficher les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+                        <button class="btn btn-primary btn-xs togglec hidecomment" data="{{ article.id }}">masquer les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+                    </div>
+                    {{ render(controller('App\\Controller\\CommentController::listComments', {'id':article.id})) }} 
+                    {% endif %}
+                    {#formulaire pour les commentaires #}
+                    <form action="{{ path('app_comment_insert', {"id":article.id}) }}" method="post">
+                    {{ render(controller('App\\Controller\\CommentController::newComment')) }} 
+                    </form>
+                </article>
+
+            {% endfor %}
+        </div>
+    </div>
     
 {% endblock %}
 
