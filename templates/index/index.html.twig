@@ -7,26 +7,34 @@
     {% for article in last_articles %}
         {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
         
-        <article class="jumbotron">
-            <h3>{{ article.title}}</h3>
-            <p></p>
+        <article class="article">                      
+             <div class="haut">
             
-           
-             {{ render(controller('App\\Controller\\MemberController::getButton', {'id':article.author.id})) }} 
+                 {{ render(controller('App\\Controller\\MemberController::getButton', {'id':article.author.id})) }}
             
+             <img alt="User Pic" src="{{ asset('avatars/' ~ article.author.avatar ) }}" class="img-rounded img-responsive vignette_avatar">
+             </div>
+                          
+             <div class="titre_article">
+                <h3>{{ article.title}}</h3> 
+                <p class="text-center" style="font-size:13px;"><small>Posté le : {{ article.datearticle|date('d/m/Y') }} à {{ article.datearticle|date('H:i') }}</small></p>                
+            </div>  
             
-            <p>{{ article.content}}</p>
-            {% if article.nbcomment > 0 %}
-            <div>
-                <button class="btn btn-primary btn-xs togglec showcomment" data="{{ article.id }}">afficher les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
-                <button class="btn btn-primary btn-xs togglec hidecomment" data="{{ article.id }}">masquer les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+            <div class="article_content">
+                <p>{{ article.content}}</p>
             </div>
-            {{ render(controller('App\\Controller\\CommentController::listComments', {'id':article.id})) }} 
-            {% endif %}
-            {#formulaire pour les commentaires #}
-            <form action="{{ path('app_comment_insert', {"id":article.id}) }}" method="post">
-            {{ render(controller('App\\Controller\\CommentController::newComment')) }} 
-            </form>
+                {% if article.nbcomment > 0 %}
+            <div>
+                <button class="btn btn-primary btn-xs togglec showcomment" data="{{ article.id }}">Afficher les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+                <button class="btn btn-primary btn-xs togglec hidecomment" data="{{ article.id }}">Masquer les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+            </div>
+                {{ render(controller('App\\Controller\\CommentController::listComments', {'id':article.id})) }} 
+                {% endif %}
+                {#formulaire pour les commentaires #}
+            
+                <form action="{{ path('app_comment_insert', {"id":article.id}) }}" method="post">
+                {{ render(controller('App\\Controller\\CommentController::newComment')) }} 
+                </form>
         </article>
         
     {% endfor %}
@@ -34,6 +42,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }} {# permet de garder le block tel qu'il est défini dans layout et d'y ajouter notre contenu spécifiqu / sinon on perd les script JQ et BootStrap #}
+    {{ parent() }} {# permet de garder le block tel qu'il est défini dans layout et d'y ajouter notre contenu spécifique / sinon on perd les script JQ et BootStrap #}
     <script src="{{ asset('JS/index.js') }}"></script>
 {% endblock %}
