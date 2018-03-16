@@ -1,14 +1,7 @@
-
-{% if member.id == app.user.id %}
-    {{ member.getfullname}}
-{% else %}
-    <div class="btn-group">
-        <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          par {{ member.getFullname}} <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path("app_member_view", {"id":member.id}) }}">voir profil</a></li>
-            <li><a href="">écrire un message</a></li>
-        </ul>
-    </div>
-{% endif %}
+<div class="pseudo">
+    {% if member.id == app.user.id %}
+        {{ member.getFullname}}     
+    {% else %}
+        <a href="{{ path('app_member_view', {'id':member.id}) }}" >{{ member.getFullname}}</a>
+    {% endif %}
+</div>
