@@ -13,16 +13,7 @@ use Symfony\Component\Validator\Constraints\File;
 */
 class BirthController extends Controller
 {
-    /**
-     * @Route("/")
-     */
-    public function index()
-    {
-        return $this->render('birth/index.html.twig', [
-            'controller_name' => 'BirthController',
-        ]);
-    }
-    
+        
      /**
      * @Route("/edit/{id}", defaults={"id":null})
      */
@@ -82,7 +73,7 @@ class BirthController extends Controller
             //fait l'enregistement en bdd
             $em->flush(); //execute des transaction SQL. si tout passe va envoie en bdd, sinon fait un rollback
             $this->addFlash('success', 'l\'article '.$birth->getTitle().' a été enregistrée'); //ajout du message flash
-            return $this->redirectToRoute('app_birth_index'); //redirection
+            return $this->redirectToRoute('app_index_index'); //redirection
            } else{
               $this->addFlash('error', 'erreur'); //ajout du message flash
             }

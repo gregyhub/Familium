@@ -9,10 +9,9 @@
         
         <article class="jumbotron">
             <h3>{{ article.title}}</h3>
-            <p></p>
             
-           
-             {{ render(controller('App\\Controller\\MemberController::getButton', {'id':article.author.id})) }} 
+      
+            <p>{{ render(controller('App\\Controller\\MemberController::getButton', {'id':article.author.id})) }}</p> 
             
             
             <p>{{ article.content}}</p>
