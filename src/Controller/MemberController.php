@@ -16,7 +16,7 @@ class MemberController extends Controller
        /* $repo = $this->getDoctrine()->getRepository(Article::class);
         $lastArticles = $repo->findLatest(3);*/
         $repo = $this->getDoctrine()->getRepository(User::class);
-        $allmember = $repo->findAll();
+        $allmember = $repo->findAllActive();
         return $this->render('member/member.html.twig',
                 [
                     'allmember' => $allmember
