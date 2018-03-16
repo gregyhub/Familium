@@ -40,7 +40,6 @@ class MemberController extends Controller
     }
     
     public function getButton(User $user){
-        dump($user);
         return $this->render('member/buttonuser.html.twig',
                 [
                     'member' => $user
