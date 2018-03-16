@@ -66,6 +66,80 @@
     margin-bottom:5px;
     display:none;
 }
+.vignette_avatar{
+    max-height: 30px;
+    display: inline;
+    float:left;
+    margin: 5px 5px 5px 5px;
+    border-radius: 15px;
+    
+}
+.pseudo{
+    display: inline;
+    font-size: 25px;
+    color: white;
+}
+.article_content{
+    font-size: 15px; 
+    margin: 15px;
+}
+.article{
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    margin: 12px 12px;
+    background: WhiteSmoke;
+    box-shadow: 2px 2px 2px 0px;
+}
+.titre_article{
+    text-align: center;
+    text-transform: uppercase;
+}
+h3{
+    
+}
+.haut{
+    background: #BA4F4C;
+    border-bottom: 1px solid #337ab7;
+    padding: 5px;
+    border-radius: 10px 10px 0 0 ;
+}
+.showcomment, .hidecomment{
+    margin: 0 0 0 15px;
+}
+div button{
+    margin: 0 0px 10px 0;;
+}
+.commentaire{
+    margin: 15px;
+}
+article form{
+    margin: 15px;
+}
+.commentaire .pseudo{
+    font-size: 13px;
+}
+.commentaire .vignette_avatar{
+    max-height: 20px;
+    border-radius: 15px;
+}
+body{
+    font-family: 'EB Garamond', serif;
+}
+.panel-info>.panel-heading{
+    background: #BA4F4C;
+    color: white;
+    border: none;
+}
+.navbar-default{
+    background: #BA4F4C;
+    border-color: #BA4F4C;
+    border-radius: 0px;
+}
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand{
+    color: white;
+}
+.article a{
+    text-decoration: none;
 
 .avatar_list{
     height:150px;
