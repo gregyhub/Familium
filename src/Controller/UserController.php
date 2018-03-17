@@ -2,14 +2,13 @@
 
 namespace App\Controller;
 
+use App\Form\UserPasswordType;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use function dump;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends Controller
 {
@@ -26,7 +25,7 @@ class UserController extends Controller
     /**
      * @Route("user/edit")
      */
-    public function edit(UserPasswordEncoderInterface $encode, Request $request, AuthenticationUtils $authenticationUtils){
+    public function edit( Request $request){
         
         $user = $this->getUser();
         $originalAvatar=null;
@@ -37,7 +36,7 @@ class UserController extends Controller
                 new File($this->getParameter('avatar_directory').'/'.$user->getAvatar())
             );
         }
-        $form = $this->createForm(UserType::class, $user, ['controller' => 'user']);
+        $form = $this->createForm(UserType::class, $user, ['controller' => 'user', 'validation_groups' => ['edit']]);
         $form->handleRequest($request); //le formulaire traite la requete HTTP
        //le formulaire a été envoyé ou NON ? si oui, il fait le mapping avec notre objet category et effectue les Setter à notre place
        //si le formulaire a été envoyé
@@ -81,5 +80,49 @@ class UserController extends Controller
             
             'form' => $form->createView()
         ]);
+    }
+    
+    /**
+     * @Route("/editpassword")
+     */
+    public function editpassword(UserPasswordEncoderInterface $encoder, Request $request){        
+        $user = $this->getUser();
+        /*
+        dump($user->getAvatar()->getFilename());
+        $user->setAvatar(
+                new File($this->getParameter('avatar_directory').'/'.$user->getAvatar())
+            );
+dump($user->getAvatar());
+         * */
+
+        $form = $this->createForm(UserPasswordType::class, $user);
+        $form->handleRequest($request); 
+
+       if($form->isSubmitted()){
+
+           if($form->isValid()){              
+               
+            $encoded = $encoder->encodePassword($user, $user->getPlainpassword());
+            $user->setPassword($encoded);
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($user);                
+            $em->flush();                
+            $this->addFlash('success', 'Bravo '.$user->getFullName().', votre mot de passe a été modifié avec succès !'); 
+            //return $this->redirectToRoute('app_security_login'); //redirection
+           }
+           else{
+               $this->addFlash('error', 'erreur'); //ajout du message flash
+           }
+        } 
+        
+        if ($user->getAvatar() instanceof File) {
+                   $user->setAvatar($user->getAvatar()->getBasename());
+        }
+        
+        return $this->render('user/editpassword.html.twig', [
+         'form' => $form->createView()
+        ]);
+  
     }
 }
