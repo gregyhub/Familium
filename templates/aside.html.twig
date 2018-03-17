@@ -1,17 +1,20 @@
 
-<aside class="col-md-3">
-     <ul class="nav navbar">
-      {% if app.user is not null%}
-      <!-- si null, alors utilisateur n'est pas connecté -->
-      <li>
-          <a href="{{ path("app_event_edit") }}">Ajouter un Evenement</a>
-      </li>
-      <li>
-          <a href="{{ path("app_birth_edit") }}">Annoncer une naissance</a>
-      </li>
-      <li>
-          <a href="{{ path("app_member_member") }}">Liste des membres</a>
-      </li>
-      {% endif %}
+<aside class="col-md-3 aside">
+    <ul class="nav navbar">
+     {% if app.user is not null%}
+     <!-- si null, alors utilisateur n'est pas connecté -->
+          <li>
+         <a href="{{ path("app_index_index") }}">Fil d'actualité</a>
+     </li>
+     <li>
+         <a href="{{ path("app_event_edit") }}">Ajouter un évenement</a>
+     </li>
+     <li>
+         <a href="{{ path("app_birth_edit") }}">Annoncer une naissance</a>
+     </li>
+     <li>
+         <a href="{{ path("app_member_member") }}">Liste des membres</a>
+     </li>
+     {% endif %}
   </ul>
 </aside>

@@ -140,7 +140,7 @@ body{
 }
 .article a{
     text-decoration: none;
-
+}
 .avatar_list{
     height:150px;
 }
@@ -161,4 +161,11 @@ h1{
     text-align: center;
     margin-top: 10px;
     margin-bottom: 15px;
+}
+.pseudo a{
+    color: white;
+}
+.aside{
+    position: relative;
+    margin-top: 13px;
 }
