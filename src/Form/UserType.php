@@ -21,8 +21,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->controller = $options['controller'];
-        if($this->controller == 'security' || $this->controller == 'user')
-        {
+       
             $builder
             ->add(  'lastname',
                     TextType::class,
@@ -93,8 +92,8 @@ class UserType extends AbstractType
                     'required' => false
                     ]
             );
-        }
-        if($this->controller == 'security' || $this->controller == 'editpassword')
+        
+        if($this->controller == 'security')
         {
             $builder->add(  'plainpassword',
                     RepeatedType::class,  //2 champs qui doivent être identique

@@ -37,6 +37,7 @@ class UserController extends Controller
             );
         }
         $form = $this->createForm(UserType::class, $user, ['controller' => 'user', 'validation_groups' => ['edit']]);
+       
         $form->handleRequest($request); //le formulaire traite la requete HTTP
        //le formulaire a été envoyé ou NON ? si oui, il fait le mapping avec notre objet category et effectue les Setter à notre place
        //si le formulaire a été envoyé
@@ -70,6 +71,8 @@ class UserController extends Controller
            else{
                $this->addFlash('error', 'erreur'); //ajout du message flash
            }
+           dump($user); 
+           dump($form);
        }
        if ($user->getAvatar() instanceof File) {
                    $user->setAvatar($user->getAvatar()->getFilename());
