@@ -247,7 +247,7 @@ class User implements AdvancedUserInterface
     }
 
     public function getFullName(){
-        return ucfirst($this->getFirstname()). ' '.strtoupper($this->getLastname());
+        return ucfirst($this->getFirstname()). ' '. strtoupper($this->getLastname());
     }
     
     public function getIsActive() {
