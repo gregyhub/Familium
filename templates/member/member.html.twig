@@ -4,20 +4,30 @@
 {% block content %}
    
     <h1>Liste des utilisateurs</h1> 
-    
-    {% for member in allmember %}
-        {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
-        
-        <div class="jumbotron">
-            <a href="{{ path("app_member_view", {"id":member.id}) }}">voir le profil</a>
-            <h3>{{ member.getFullname}}</h3>
-            <h3> {{ member.email}}</h3>
-            <h3> {{ member.phone}}</h3>
-            
+        <div class="row">
+            {% include 'aside.html.twig' %}
+            <div class="col-md-8">
+                <ul class="list-group">
+                {% for member in allmember %}
+                    {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
+                    {% if member.id != app.user.id %}
+                        <li class="list-group-item list-member">
+                            <p class="pull-right"><a href="{{ path("app_member_view", {"id":member.id}) }}">voir le profil</a></p>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img alt="User Pic" src="{{ asset('avatars/' ~ member.avatar ) }}" class="img-rounded img-responsive avatar_list"> 
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>{{ member.getFullname}}</h3>
+                                    <h3> {{ member.email}}</h3>
+                                    <h3> {{ member.phone}}</h3>
+                                </div>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
         </div>
-
-        
-    {% endfor %}
-    
 {% endblock %}
 

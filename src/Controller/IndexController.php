@@ -19,8 +19,8 @@ class IndexController extends Controller
         $lastArticles = $repo->findLatest(3);*/
         $repoArticles = $this->getDoctrine()->getRepository(SuperArticle::class);
         $allArticles = $repoArticles->findAllArticles();
-        $repoComments = $this->getDoctrine()->getRepository(\App\Entity\Comment::class);
         
+        $repoComments = $this->getDoctrine()->getRepository(\App\Entity\Comment::class);
         foreach ($allArticles as $article){
             $article->setNbComment($repoComments->countComments($article->getId()));
         }
