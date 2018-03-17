@@ -52,7 +52,9 @@ class UserController extends Controller
                     if(!is_null($originalAvatar)){
                         //je rentre dans cette condition si le champ file est rempli, et uniquement si original image n'est pas null
                         //sioriginalImage est null c'est que c'est l'ajout un nouvel articl ou la modification d'un article qui n'avait pas d'image
-                        unlink($this->getParameter('avatar_directory').'/'. $originalAvatar);
+                        if(strpos($originalAvatar, 'default') === false){
+                            unlink($this->getParameter('avatar_directory').'/'. $originalAvatar);
+                        } 
                     }
                 }else{
                     $user->setAvatar($originalAvatar);
