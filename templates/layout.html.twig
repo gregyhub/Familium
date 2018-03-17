@@ -30,25 +30,26 @@
               {% endif %}
     <nav class="navbar navbar-default">
         <div class="container">
-              <a class="navbar-brand" href="{{ path('app_index_index')}}">Familium</a>  
-              <ul class="nav navbar-nav navbar-right">
-                  {% if app.user is null%}
-                  <!-- si null, alors utilisateur n'est pas connecté -->
-                  <li>
-                      <a href="{{ path('app_security_login') }}">Connexion</a>
-                  </li>
-                  <li>
-                      <a href="{{ path('app_security_register') }}">Inscription</a>
-                  </li>
-                  {% else %}
-                  <li>
-                      <a href="{{ path('app_user_view') }}">{{ app.user.fullname }}</a>
-                  </li>
-                  <li>
-                      <a href="{{ path('app_security_logout') }}">Déconnexion</a>
-                  </li>
-                  {% endif %}
-              </ul>
+            <a class="navbar-brand" href="{{ path('app_index_index')}}">Familium</a>  
+            <ul class="nav navbar-nav navbar-right">
+                {% if app.user is null%}
+                <!-- si null, alors utilisateur n'est pas connecté -->
+                <li>
+                    <a href="{{ path('app_security_login') }}">Connexion</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_security_register') }}">Inscription</a>
+                </li>
+                {% else %}
+                <img alt="User Pic" src="{{ asset('avatars/' ~ app.user.avatar ) }}" class="img-rounded img-responsive vignette_avatar">
+                <li>
+                    <a href="{{ path('app_user_view') }}">{{ app.user.fullname }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_security_logout') }}">Déconnexion</a>
+                </li>
+                {% endif %}
+            </ul>
         </div><!-- /.container- -->
     </nav>
     <div class="container">
