@@ -13,9 +13,6 @@
                                 <h3 class="panel-title">{{ user.getfullname }}</h3>
                             </div>
                         </div>
-                        <div class="col-md-3  pull-right">
-                        <a href="{{ path('app_user_edit') }}" >Edit Profile</a> 
-                        </div>
                         <div class="panel-body row">
                             
                             <div class="col-md-5 col-lg-5 " align="center"> 
@@ -67,7 +64,11 @@
                                 </table>
                             </div>
                             
-                        </div>
+                            <div class="col-md-6  pull-right">
+                               <a class="btn btn-primary" href="{{ path('app_user_edit') }}" >Edit Profile</a>
+                                 <a class="btn btn-primary" href="{{ path('app_user_editpassword') }}" >Edit Password</a>
+                            </div>
+                        </div> 
                     </div>                         
                 </div>
             </div>
