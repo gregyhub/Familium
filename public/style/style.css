@@ -162,3 +162,10 @@ h1{
     margin-top: 10px;
     margin-bottom: 15px;
 }
+
+.albumphoto{
+    width: 240px;
+}
+.ligne-photo{
+    padding:0;
+}

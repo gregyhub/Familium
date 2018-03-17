@@ -1,0 +1,5 @@
+            {% for album in albums %}
+                
+                <li><a href="{{ path('app_album_show', {'id':album.id}) }}" >Album <span>{{ album.title  }}</span> de {{ album.author }}</a></li>
+                
+            {% endfor %}

@@ -2,11 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\PhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="PhotoRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PhotoRepository")
  */
 class Photo
 {
@@ -42,7 +41,7 @@ class Photo
         return $this->photo;
     }
 
-    public function getAlbum(): Album {
+    public function getAlbum() : Album {
         return $this->album;
     }
 
@@ -56,7 +55,7 @@ class Photo
         return $this;
     }
 
-    public function setAlbum(Album $album) {
+    public function setAlbum($album) {
         $this->album = $album;
         return $this;
     }

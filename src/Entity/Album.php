@@ -44,7 +44,18 @@ class Album
      */
     private $visibility = "public";
     
-    public function __construct() {
+    private $photos;
+    
+    public function getPhotos() {
+        return $this->photos;
+    }
+
+    public function setPhotos($photos) {
+        $this->photos = $photos;
+        return $this;
+    }
+
+        public function __construct() {
         $this->dateupdate = new \DateTime("now");
     }
     
