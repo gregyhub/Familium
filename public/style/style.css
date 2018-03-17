@@ -169,3 +169,15 @@ h1{
     position: relative;
     margin-top: 13px;
 }
+
+.haut .pseudo a{
+    color: black;
+}
+.boutton{
+    position: relative;
+    margin-top: 25px;
+}
+div .formu{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}

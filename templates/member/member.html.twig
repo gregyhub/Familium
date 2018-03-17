@@ -5,6 +5,15 @@
    
     <h1>Liste des utilisateurs</h1> 
         <div class="row">
+                <form action="" method="post" class="formu row">
+                    <div class="col-md-10">                        
+                        <label for="email">Inviter un nouveau membre</label>
+                        <input type="email" class="form-control" id="email" name="email" value="" placeholder="Indiquez l'E-Mail">                        
+                    </div>
+                    <div class="form-btn-group col-md-2 ">
+                        <button type="submit" class="btn btn-primary boutton">Ajouter</button>
+                    </div>                                       
+                </form>
             {% include 'aside.html.twig' %}
             <div class="col-md-8">
                 <ul class="list-group">
@@ -13,11 +22,12 @@
                     {% if member.id != app.user.id %}
                         <li class="list-group-item list-member">
                             <p class="pull-right"><a href="{{ path("app_member_view", {"id":member.id}) }}">voir le profil</a></p>
+                            
                             <div class="row">
                                 <div class="col-md-3">
                                     <img alt="User Pic" src="{{ asset('avatars/' ~ member.avatar ) }}" class="img-rounded img-responsive avatar_list"> 
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-9">
                                     <h3>{{ member.getFullname}}</h3>
                                     <h3> {{ member.email}}</h3>
                                     <h3> {{ member.phone}}</h3>

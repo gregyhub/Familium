@@ -46,5 +46,27 @@ class MemberController extends Controller
                 ]
                 );
     }
+    
+    /**
+     * @Route("/member/send")
+     * @param \Swift_Mailer $mailer
+     * @return type
+     */
+    public function sendEmail(\Swift_Mailer $mailer){
+        
+        $message = (new \Swift_Message('Hello Email'))
+        ->setFrom('send@example.com')
+        ->setTo('gregmalaud@hotmail.com')
+        ->setBody('You should see me from the profiler!')
+    ;
+
+        $mailer->send($message);
+        return $this->render('member/member.html.twig',
+        [
+            
+        ]
+        );
+       // return $this->redirectToRoute('app_index_index');
+    }
 
 }
