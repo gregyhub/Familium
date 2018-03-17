@@ -75,7 +75,7 @@ class User implements AdvancedUserInterface
     
     /**
      * @ORM\Column(nullable=true)
-     * @Assert\Image()
+     * @Assert\Image(groups={"edit"})
      * @var string
      */
     private $avatar;

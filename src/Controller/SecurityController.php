@@ -17,16 +17,21 @@ class SecurityController extends Controller
      */
     public function register(UserPasswordEncoderInterface $encoder, Request $request)
     {
-        if($this->isLogged()===true){ return $this->redirectToRoute('app_index_index'); }//redirection 
+        if($this->isLogged()===true)
+            {
+            return $this->redirectToRoute('app_index_index'); 
+            
+            }//redirection 
         $user = new User();
-        $form = $this->createForm(UserType::class, $user, ['controller' => 'security']);
+        $form = $this->createForm(UserType::class, $user, ['controller' => 'security', 'validation_groups' => ['edit']]);
         $form->handleRequest($request); //le formulaire traite la requete HTTP
        //le formulaire a été envoyé ou NON ? si oui, il fait le mapping avec notre objet user et effectue les Setter à notre place
        //si le formulaire a été envoyé
        if($form->isSubmitted()){
            //si il n'y a pas d'erreur de validation du formulaire > dans la class category
-           dump($user);
+
            if($form->isValid()){
+               
                $avatar =  $user->getAvatar(); //équivalent à puisqu le formulaire est mappé sur article : $form['picture']->getData(); 
 
                if(!is_null($avatar)){
