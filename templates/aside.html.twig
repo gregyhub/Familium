@@ -20,4 +20,12 @@
      </li>
      {% endif %}
   </ul>
+    <ul class="nav navbar"><li>
+          <a href="{{ path("app_album_liste") }}">Voir tous les albums</a>
+      </li>
+      {% if app.user is not null%}
+      <!-- si null, alors utilisateur n'est pas connecté -->
+      {{ render(controller('App\\Controller\\AlbumController::listeaside')) }}
+      {% endif %}
+  </ul>
 </aside>

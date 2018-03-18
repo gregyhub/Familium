@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    
+        <h1>Profil</h1>
+        <div class="row">
+            {% include 'aside.html.twig' %}
+            <div class="col-md-8">
+                <a class="user_menu" href="{{ path('app_user_view') }}">voir mes informations personnelles</a>
+                <a class="user_menu" href="{{ path('app_user_edit') }}">Modifier mes informations</a>
+                <a class="user_menu" href="{{ path('app_album_myalbums') }}">voir mes albums</a>
+            </div>
+        </div>
+{% endblock %}

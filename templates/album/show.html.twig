@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <h1>Album Photo</h1>
+    <div class="row">
+        {% include 'aside.html.twig' %}
+        <div class="col-md-8">
+            <div class="row article">
+                 <div class="haut">
+                    {{ render(controller('App\\Controller\\MemberController::getButton', {'id':album.author.id})) }}
+                   <img alt="User Pic" src="{{ asset('avatars/' ~ album.author.avatar ) }}" class="img-rounded img-responsive vignette_avatar">
+                </div>
+                <div class="titre_article">
+                    <h3>{{ album.title}}</h3> 
+                    <p class="text-center" style="font-size:13px;"><small>modifié le : {{ album.dateupdate|date('d/m/Y') }}</small></p>                
+                </div>  
+                {% for photo in photos %}
+                    <div class="col-md-4 ligne-photo">
+                        <img class="albumphoto img-responsive img-thumbnail" src="{{ asset('albums/' ~ photo.photo) }}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+       </div>
+    </div>
+{% endblock %}
