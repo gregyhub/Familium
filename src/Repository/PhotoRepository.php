@@ -24,7 +24,6 @@ class PhotoRepository extends ServiceEntityRepository
     
     public function getPhotosByAlbum($idAlbum){
         // la table en base de données correspondant à l'entité liée au repository en cours
-        dump($this->getClassMetadata()->table);
        $tablephoto = $this->getClassMetadata()->table["name"];
        
 

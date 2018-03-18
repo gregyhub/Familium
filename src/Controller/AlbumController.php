@@ -43,7 +43,7 @@ class AlbumController extends Controller
     }
     
     
-    public function liste(Request $request)
+    public function listeAside()
     {
         $albums = $this->getAlbums();
         return $this->render('album/list.html.twig', [
@@ -53,22 +53,13 @@ class AlbumController extends Controller
     
     /**
      * 
-     * @Route("/show/{id}", defaults={"id"=null})
+     * @Route("/show/{id}")
      */
     public function show(Album $album=null)
     {        
         $em = $this->getDoctrine()->getRepository(Photo::class);
-        
-        if(is_null($album)){
-            $albums = $this->getAlbums();
-            foreach($albums as $album){
-                $photos = $em->getPhotosByAlbum($album->getId());
-                $album->setPhotos($photos);
-            }
-        }else{
-            $photos = $em->getPhotosByAlbum($album->getId());
-            $album->setPhotos($photos);
-        }
+        $photos = $em->getPhotosByAlbum($album->getId());
+        $album->setPhotos($photos);
         
         return $this->render('album/show.html.twig', [
             'album' => $album,
@@ -76,7 +67,40 @@ class AlbumController extends Controller
         ]);
     }
     
+    /**
+     * @Route("/myalbums")
+     */
+    public function myAlbums(){
+        $em = $this->getDoctrine()->getRepository(Album::class);
+        $user = $this->getUser();
+        $albums = $em->findBy(['author' => $user->getId()]);
+        
+        $em = $this->getDoctrine()->getRepository(Photo::class);
+        foreach($albums as $album){
+             $photos = $em->getPhotosByAlbum($album->getId());
+             $album->setPhotos($photos);
+        }
+        
+        return $this->render('album/albums.html.twig', [
+            'albums' => $albums
+        ]);
+    }
     
+    /**
+     * @Route("/liste")
+     */
+    public function liste(){
+        $albums = $this->getAlbums();
+        $em = $this->getDoctrine()->getRepository(Photo::class);
+        foreach($albums as $album){
+             $photos = $em->getPhotosByAlbum($album->getId());
+             $album->setPhotos($photos);
+        }
+        return $this->render('album/albums.html.twig', [
+            'albums' => $albums
+        ]);
+    }
+
     private function getAlbums(){
         $em = $this->getDoctrine()->getRepository(Album::class);
         $albums = $em->findBy(['visibility' => 'public']);

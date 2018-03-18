@@ -16,6 +16,16 @@ class UserController extends Controller
     /**
      * @Route("/user")
      */
+    public function indexUser()
+    {
+        return $this->render('user/index.html.twig', [
+            
+        ]);
+    }
+
+    /**
+     * @Route("/user/view")
+     */
     public function view()
     {
         $user = $this->getUser();
