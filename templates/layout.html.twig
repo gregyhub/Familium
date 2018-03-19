@@ -43,9 +43,10 @@
                     <a href="{{ path('app_security_register') }}">Inscription</a>
                 </li>
                 {% else %}
-                <img alt="User Pic" src="{{ asset('avatars/' ~ app.user.avatar ) }}" class="img-rounded img-responsive vignette_avatar">
+                <a href="{{ path('app_user_view') }}">
+                <img alt="User Pic" src="{{ asset('avatars/' ~ app.user.avatar ) }}" class="img-rounded img-responsive vignette_avatar_haut">
                 <li>
-                    <a href="{{ path('app_user_view') }}">{{ app.user.fullname }}</a>
+                    {{ app.user.fullname }}</a>
                 </li>
                 <li>
                     <ul class="nav nav-tabs">

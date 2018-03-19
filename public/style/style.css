@@ -71,12 +71,23 @@
     display: inline;
     float:left;
     margin: 5px 5px 5px 5px;
-    border-radius: 15px;
-    
+    border-radius: 15px;    
+}
+.vignette_avatar_haut{
+    max-height: 30px;
+    display: inline;
+    float:left;
+    margin: 10px 0 5px 10px;
+    border-radius: 15px;    
 }
 .pseudo{
     display: inline;
     font-size: 25px;
+    color: white;
+    text-decoration: none;
+}
+.pseudo a{
+    text-decoration: none;
     color: white;
 }
 .article_content{
@@ -93,9 +104,6 @@
 .titre_article{
     text-align: center;
     text-transform: uppercase;
-}
-h3{
-    
 }
 .haut{
     background: #BA4F4C;
@@ -162,16 +170,9 @@ h1{
     margin-top: 10px;
     margin-bottom: 15px;
 }
-.pseudo a{
-    color: white;
-}
 .aside{
     position: relative;
     margin-top: 13px;
-}
-
-.haut .pseudo a{
-    color: black;
 }
 .boutton{
     position: relative;
@@ -194,6 +195,9 @@ div .formu{
     padding: 50px;
     position: relative;
     top: 50px;
+}
+.picture_article{
+    margin: 0 15px 0 15px;
 }
 .icone{
     color: white;
