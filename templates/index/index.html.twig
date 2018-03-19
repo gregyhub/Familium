@@ -11,11 +11,8 @@
         {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
         
         <article class="article">                      
-             <div class="haut">
-            
+             <div class="haut">            
                  {{ render(controller('App\\Controller\\MemberController::getButton', {'id':article.author.id})) }}
-            
-             <img alt="User Pic" src="{{ asset('avatars/' ~ article.author.avatar ) }}" class="img-rounded img-responsive vignette_avatar">
              </div>
                           
              <div class="titre_article">
@@ -23,7 +20,11 @@
                 <p class="text-center" style="font-size:13px;"><small>Posté le : {{ article.datearticle|date('d/m/Y') }} à {{ article.datearticle|date('H:i') }}</small></p>                
             </div>  
             
-            <div class="article_content">
+            {% if article.picture %}
+                <img src="{{ asset('uploads/' ~ article.picture) }}" class="picture_article pull-left">
+            {% endif %}
+                
+            <div class="article_content clearfix">
                 <p>{{ article.content}}</p>
             </div>
                 {% if article.nbcomment > 0 %}

@@ -4,7 +4,6 @@
     {% for comment in comments %}
         <div class="commentaire">
             <li class="list-group-item panel panel-info">
-                <img alt="User Pic" src="{{ asset('avatars/' ~ comment.author.avatar ) }}" class="img-rounded img-responsive vignette_avatar">
                 <h6 class="lead panel-heading">{{ render(controller('App\\Controller\\MemberController::getButton', {'id':comment.author.id})) }}</h6>
                 <p>{{ comment.comment }}</p>
                 <p class="text-right"><small>Commentaire laissé le : {{ comment.datecomment|date('d/m/Y') }} à {{ comment.datecomment|date('H:i') }}</small></p>

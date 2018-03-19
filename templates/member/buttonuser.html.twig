@@ -1,7 +1,10 @@
 <div class="pseudo">
     {% if member.id == app.user.id %}
-        {{ member.getFullname}}     
+        {{ member.getFullname}}   
+        <img alt="User Pic" src="{{ asset('avatars/' ~ member.avatar ) }}" class="img-rounded img-responsive vignette_avatar">  
     {% else %}
-        <a href="{{ path('app_member_view', {'id':member.id}) }}" >{{ member.getFullname}}</a>
+        <a class="lien" href="{{ path('app_member_view', {'id':member.id}) }}" >{{ member.getFullname}}
+            <img alt="User Pic" src="{{ asset('avatars/' ~ member.avatar ) }}" class="img-rounded img-responsive vignette_avatar">
+        </a>
     {% endif %}
 </div>
