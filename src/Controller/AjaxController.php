@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Entity\Event;
+use App\Form\EventType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,18 +17,25 @@ class AjaxController extends Controller
      */
     public function category(Request $request)
     {
-        dump($request->request->get('category'));
-       if($request->request->get('category')){
-            //make something curious, get some unbelieveable data
-            $arrData = ['output' => 'here the result which will appear in div'];
-            return new JsonResponse($arrData);
+        if($request->request->get('category')){
+            $id = $request->request->get('category');
+            $repository = $this->getDoctrine()->getRepository(Category::class);
+            $category = $repository->find($id);
+            $response=[];
+            if($category->getName() == 'Evenement'){
+                
+                $test = $this->get('event_form');
+                $user=$this->getUser();
+                dump($test->formEvent($user));
+                return new JsonResponse(array('success' => $test));
+          
+            }elseif($category->getName() == 'Naissance'){
+                $response=array('success' => 'Naissance');
+            }
+            
+            return new JsonResponse($response);
         }
          
-            $response = new JsonResponse();
-            $response->setStatusCode(200);
-	    //ajout de données éventuelles
-            $response->setData(array(
-                'successMessage' => "Votre message a bien été envoyé"));
-            return $response;
+           
     }
 }

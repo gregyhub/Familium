@@ -3,12 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Event;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EventType extends ArticleType
+class EventType  extends AbstractType //extends ArticleType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

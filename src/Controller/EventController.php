@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Event;
+use App\Entity\User;
 use App\Form\EventType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,14 +17,17 @@ use function dump;
  */
 class EventController extends Controller
 {
-    /**
-     * @Route("/")
-     */
-    public function index()
+  
+    public function formEvent(User $user)
     {
-        return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
+        $event = new Event();
+        $event->setAuthor($user);
+        //$event->setCategory($category);
+        $form = $this->createForm(EventType::class, $event); 
+        return $this->render('event/eventform.html.twig', [
+            'form' => $form->createView()
         ]);
+
     }
     
      /**
@@ -90,7 +95,7 @@ class EventController extends Controller
             }
        }
        
-          return $this->render('event/edit.html.twig', [
+        return $this->render('event/edit.html.twig', [
                 'form' => $form->createView(),
                 'original_image' => $originalImage
        ]);

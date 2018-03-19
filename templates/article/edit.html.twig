@@ -2,35 +2,33 @@
 
 {% block javascripts %}
     {{ parent()   }}
-     <script src="{{ asset('JS/ajax.js') }}"></script>
-     
-     <script> 
-        $(function() {
-    
+     {# <script src="{{ asset('JS/ajax.js') }}"></script> #}
+     <script>
+         $(function() {
+
             $('#article_category').on('change', function(){
                 var category = $(this).val();
-                console.log(category);
                 $.ajax({
                     url:'/ajax/category',
                     type: "POST",
                     dataType: "json",
                     async: true,
+                    data:{
+                        'category': category
+                    },
                     success: function (data){
-                        console.log(data)
+                        if(data.success === 'event'){
+                            console.log(data);
+                            {# $('.insertForm').html({{ render(controller('App\\Controller\\EventController::formEvent')) }}; #}
+                            
+                        }
                         //$('div#ajax-results').html(data.output);
-                    }, 
-                    error : function(xhr, textStatus, errorThrown) {  
-                  
-                console.log(xhr); 
-                console.log(textStatus); 
-                console.log(errorThrown ); 
-               }  
+                    }
                 });
             });
 
         });
     </script>
-     
 {% endblock %}
 
 {% block content %}
@@ -52,6 +50,8 @@
                     <img src="{{ asset('uploads/') ~ form.vars.value.picture.filename }}" alt="">
                      {{ form_row(form.remove_image) }}
                 {% endif %}
+                <div class="insertForm"></div>
+                
                 <div class="form-btn-group pull-right">
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                     <a href="{{ path('app_index_index') }}" class="btn btn-default">retour</a>

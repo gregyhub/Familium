@@ -8,6 +8,8 @@ parameters:
     #kernel.project_dir c'est le chemin racine de notre projet
 
 services:
+    event_form:
+        class: App\Controller\EventController
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
