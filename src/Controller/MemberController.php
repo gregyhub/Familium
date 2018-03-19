@@ -61,12 +61,12 @@ class MemberController extends Controller
     ;
 
         $mailer->send($message);
-        return $this->render('member/member.html.twig',
-        [
-            
-        ]
-        );
-       // return $this->redirectToRoute('app_index_index');
+        
+        return $this->render('member/test.html.twig',
+                [
+                    
+                ]
+                );
     }
 
 }
