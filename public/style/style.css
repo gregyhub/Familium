@@ -195,3 +195,15 @@ div .formu{
     position: relative;
     top: 50px;
 }
+.icone{
+    color: white;
+    height: 20px;
+}
+.svg-inline--fa.fa-w-18{
+    width: 2.125em;
+    position: relative;
+    margin-top: 5px;
+}
+.panel_haut{
+    max-height: 50px;
+}

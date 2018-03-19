@@ -61,12 +61,19 @@ TABLE album
 	id album
 	id membre (FK)
 	titre
+	description
 	visibilité
 	date modif
 
 TABLE photos
 	id photo
+	titre
+	description
 	nom photo
+
+TABLE album-photo
+	id album-photo
+	id photo (FK)
 	id album (FK)
 
 
@@ -159,14 +166,11 @@ TABLE album-photo
 	id album (FK)
 
 
-TABLE message privé group
-	id message privé group
-	id membre1 (FK)
-	id membre2 (FK)
 
 TABLE message privé
 	id message
-	id message privé group (FK)
+	
 	id auteur
+        id dest
 	date
 	message

@@ -8,6 +8,8 @@
 
 
 {% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
     <script
      src="https://code.jquery.com/jquery-3.3.1.min.js"
      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -45,6 +47,20 @@
                 <li>
                     <a href="{{ path('app_user_view') }}">{{ app.user.fullname }}</a>
                 </li>
+                <li>
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-comment-alt icone"></i>
+                                <span class="badge">{{ render(controller('App\\Controller\\MessagingController::countNews')) }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('app_messaging_received') }}">Boite de reception</a></li>
+                                <li><a href="{{ path('app_messaging_sended') }}">Message envoyé</a></li>
+                            </ul>                          
+                        </li>                        
+                    </ul>
+                </li>  
                 <li>
                     <a href="{{ path('app_security_logout') }}">Déconnexion</a>
                 </li>
