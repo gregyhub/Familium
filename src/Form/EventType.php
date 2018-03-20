@@ -17,13 +17,13 @@ class EventType extends ArticleType
             ->add(  'localisation',
                     TextType::class,
                     [
-                         'label' => 'lieu de l\'evenement'
+                         'label' => 'Lieu de l\'evenement'
                     ]
                   )
             ->add(  'dateevent',
                     DateType::class,
                     [
-                     'label' => 'date de l\'evenement'
+                     'label' => 'Date de l\'evenement'
                     ]
               )
         ;

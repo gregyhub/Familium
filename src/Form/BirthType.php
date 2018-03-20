@@ -19,14 +19,14 @@ class BirthType extends ArticleType
             ->add(  'firstname',
                     TextType::class,
                     [
-                        'label' => 'prénom du bébé'
+                        'label' => 'Prénom du bébé'
                     ]
                   )
             ->add(  'gender',
                     ChoiceType::class,
                     [
-                        'label' => 'sexe du bébé',
-                        'choices' => ['garçon' => 'm', 'fille'=>'f'],
+                        'label' => 'Sexe du bébé',
+                        'choices' => ['Garçon' => 'm', 'Fille'=>'f'],
                         'expanded' => true,
                         'multiple' => false
                     ]
@@ -34,27 +34,27 @@ class BirthType extends ArticleType
             ->add(  'weight',
                     TextType::class,
                     [
-                     'label' => 'poids du bébé',
+                     'label' => 'Poids du bébé',
                      'required' => 'false'
                     ]
               )
             ->add(  'height',
                     TextType::class,
                     [
-                     'label' => 'taille du bébé',
+                     'label' => 'Taille du bébé',
                      'required' => 'false'
                     ]
               )
             ->add(  'birthdate',
                     DateType::class,
                     [
-                     'label' => 'date de naissance'
+                     'label' => 'Date de naissance'
                     ]
               )
             ->add(  'birthhour',
                     TimeType::class,
                     [
-                     'label' => 'heure de naissance',
+                     'label' => 'Heure de naissance',
                      'required' => 'false'
                     ]
               )
