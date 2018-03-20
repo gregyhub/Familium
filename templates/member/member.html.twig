@@ -21,8 +21,9 @@
                     {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
                     {% if member.id != app.user.id %}
                         <li class="list-group-item list-member">
-                            <p class="pull-right"><a href="{{ path("app_member_view", {"id":member.id}) }}">voir le profil</a></p>
-                            
+                            <p class="text-right"><a href="{{ path("app_member_view", {"id":member.id}) }}">voir le profil</a></p>
+                            <p class="text-right"><a href="{{ path('app_messaging_send', {'id':member.id} ) }}" >Envoyer un message</a></p>
+
                             <div class="row">
                                 <div class="col-md-3">
                                     <img alt="User Pic" src="{{ asset('avatars/' ~ member.avatar ) }}" class="img-rounded img-responsive avatar_list"> 

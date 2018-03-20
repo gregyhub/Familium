@@ -8,9 +8,13 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9" >
-                        <div class="panel panel-info ">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">{{ user.getfullname }}</h3>
+                        
+                        <div class="panel panel-info">
+                            <div class="panel-heading row ">
+                                <h3 class="panel-title col-md-8">{{ user.getfullname }}</h3>  
+                                <div class="col-md-4">
+                                    <a class="btn btn-primary boutton_message" href="{{ path('app_messaging_send', {'id':user.id} ) }}" >Envoyer un message</a>
+                                </div>   
                             </div>
                         </div>
                         <div class="panel-body row">
@@ -36,7 +40,7 @@
                                     </tr>
                                     <tr>
                                         <td>telephone</td>
-                                        <td>    {{ user.phone }}</td>
+                                        <td>{{ user.phone }}</td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
@@ -63,10 +67,11 @@
                                     </tr>
                                 </table>
                             </div>
-                            
-                        </div>
-                    </div>                         
+                        </div> 
+                   </div>  
                 </div>
-            </div>
-        </div>   
+            </div>                         
+        </div>
+    </div>
+</div>   
 {% endblock %}
