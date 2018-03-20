@@ -5,6 +5,8 @@ parameters:
     img_directory: '%kernel.project_dir%/public/uploads'
     avatar_directory: '%kernel.project_dir%/public/avatars'
     album_directory: '%kernel.project_dir%/public/albums'
+    logo_directory: '%kernel.project_dir%/public/logo'
+    
     #kernel.project_dir c'est le chemin racine de notre projet
 
 services:

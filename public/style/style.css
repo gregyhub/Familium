@@ -1,45 +1,35 @@
 .navbar-inverse{
-    margin-bottom: 0;
-    
+    margin-bottom: 0;    
 }
 .user-row {
     margin-bottom: 14px;
 }
-
 .user-row:last-child {
     margin-bottom: 0;
 }
-
 .dropdown-user {
     margin: 13px 0;
     padding: 5px;
     height: 100%;
 }
-
 .dropdown-user:hover {
     cursor: pointer;
 }
-
 .table-user-information > tbody > tr {
     border-top: 1px solid rgb(221, 221, 221);
 }
-
 .table-user-information > tbody > tr:first-child {
     border-top: 0;
 }
-
-
 .table-user-information > tbody > tr > td {
     border-top: 0;
 }
-.toppad
-{margin-top:20px;
+.toppad{
+    margin-top:20px;
 }
-
 .comment{
     display: none;
 }
-
 .comment .list-group-item{
     padding: 0;
 }
@@ -70,7 +60,7 @@
     max-height: 30px;
     display: inline;
     float:left;
-    margin: 5px 5px 5px 5px;
+    margin: 0px 5px 5px 5px;
     border-radius: 15px;    
 }
 .vignette_avatar_haut{
@@ -83,12 +73,12 @@
 .pseudo{
     display: inline;
     font-size: 25px;
-    color: white;
+    color: #7c4d25;
     text-decoration: none;
 }
 .pseudo a{
     text-decoration: none;
-    color: white;
+    color: #7c4d25;
 }
 .article_content{
     font-size: 15px; 
@@ -106,8 +96,8 @@
     text-transform: uppercase;
 }
 .haut{
-    background: #BA4F4C;
-    border-bottom: 1px solid #337ab7;
+    background: #FFB6CF;
+    border-bottom: 1px solid #FFB6CF;
     padding: 5px;
     border-radius: 10px 10px 0 0 ;
 }
@@ -115,7 +105,16 @@
     margin: 0 0 0 15px;
 }
 div button{
-    margin: 0 0px 10px 0;;
+    margin: 0 0px 10px 0;
+    background: #FFB6CF;
+}
+div .button:hover{
+    background: #ff2971;
+    color: white;
+}
+div .btn-xs:hover{
+    background: #ff2971;
+    color: white;
 }
 .commentaire{
     margin: 15px;
@@ -134,17 +133,17 @@ body{
     font-family: 'EB Garamond', serif;
 }
 .panel-info>.panel-heading{
-    background: #BA4F4C;
-    color: white;
+    background: #FFB6CF;
+    color: #7c4d25;
     border: none;
 }
 .navbar-default{
-    background: #BA4F4C;
-    border-color: #BA4F4C;
+    background: #FFB6CF;
+    border-color: #FFB6CF;
     border-radius: 0px;
 }
 .navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand{
-    color: white;
+    color: #7c4d25;
 }
 .article a{
     text-decoration: none;
@@ -152,19 +151,15 @@ body{
 .avatar_list{
     height:150px;
 }
-
 .list-member{
-    background-color:#EFEFEF;
+    background-color: #EFEFEF;
     box-shadow: darkslategray 5px 5px 5px;
     margin-bottom: 10px;
 }
-
 aside{
-    border: 1px #E0E0E0 solid;
+    border: 1px #ff2971 solid;
     border-radius: 5px;
-    background-color:#EFEFEF;
 }
-
 h1{
     text-align: center;
     margin-top: 10px;
@@ -173,6 +168,7 @@ h1{
 .aside{
     position: relative;
     margin-top: 13px;
+    background: white;
 }
 .boutton{
     position: relative;
@@ -188,7 +184,6 @@ div .formu{
 .ligne-photo{
     padding:0;
 }
-
 .user_menu{
     margin-top: 50px;
     background : lightgrey;
@@ -197,11 +192,14 @@ div .formu{
     top: 50px;
 }
 .picture_article{
-    margin: 0 15px 0 15px;
+    margin: 0 15px 15px 15px;
+    max-width: 695px;
 }
 .icone{
-    color: white;
+    color: #7c4d25;
     height: 20px;
+    position: relative;
+    left: 10px;
 }
 .svg-inline--fa.fa-w-18{
     width: 2.125em;
@@ -211,3 +209,61 @@ div .formu{
 .panel_haut{
     max-height: 50px;
 }
+.logo{
+    height: 45px;
+    width: 155px;
+    margin-top: 3px;
+}
+.arbre{
+    padding: 0;
+}
+.logo_acc{
+    height: 150px;
+    width: 240px;
+    text-align: center;
+}
+a{
+    color: #7c4d25;
+}
+.panel-info{
+    border-color: white;
+}
+.btn-primary{
+    color: black;
+    background: #FFB6CF;
+    border-color: #FFB6CF;
+}
+.btn-primary:hover{
+    background: #ff2971;
+    border: #ff2971;
+}
+.nav-tabs>li>a:hover{
+    background: none;
+    border: #FFB6CF;    
+}
+.deco{
+    margin-left: 5px;
+}
+.actu{
+    position: relative;
+    right: 7px;
+}
+.actu a{
+    height:40px;
+}
+.nav-tabs>li>a {
+    border: 0px;
+}
+ul li .badge{
+    background: #ff2971;
+}
+div button .badge{
+    background: #7c4d25;
+}
+.ic_img{
+    position: relative;
+    right: 7px;
+}
+
+/* #ff2971 rose de l'arbre*/
+/* #7c4d25 maron de l'arbre*/

@@ -1,27 +1,28 @@
 
 <aside class="col-md-3 aside">
     <ul class="nav navbar">
-     {% if app.user is not null%}
-     <!-- si null, alors utilisateur n'est pas connecté -->
-          <li>
-         <a href="{{ path("app_index_index") }}">Fil d'actualité</a>
-     </li>
-     <li>
-         <a href="{{ path("app_article_edit") }}">Ajouter un article</a>
-     </li>
-     <li>
-         <a href="{{ path("app_event_edit") }}">Ajouter un évenement</a>
-     </li>
-     <li>
-         <a href="{{ path("app_birth_edit") }}">Annoncer une naissance</a>
-     </li>
-     <li>
-         <a href="{{ path("app_member_member") }}">Liste des membres</a>
-     </li>
-     {% endif %}
-  </ul>
+        {% if app.user is not null%}
+        <!-- si null, alors utilisateur n'est pas connecté -->
+        <li class="actu">
+            <a href="{{ path("app_index_index") }}"><i class="fas fa-newspaper "></i>Fil d'actualité</a></i>
+        </li>
+        <li>
+            <a href="{{ path("app_article_edit") }}"><i class="fas fa-file-alt"></i>  Ajouter un article</a>
+        </li>
+        <li>
+            <a href="{{ path("app_event_edit") }}"><i class="fas fa-calendar-alt"></i> Ajouter un évenement</a>
+        </li>
+        <li>
+            <a href="{{ path("app_birth_edit") }}"><i class="fas fa-child"></i> Annoncer une naissance</a>
+        </li>
+        <li>
+            <a href="{{ path("app_member_member") }}"><i class="fas fa-user"></i> Liste des membres</a>
+        </li>
+        {% endif %}
+    </ul>
+    <hr>
     <ul class="nav navbar"><li>
-          <a href="{{ path("app_album_liste") }}">Voir tous les albums</a>
+          <a href="{{ path("app_album_liste") }}"><i class="fas fa-images ic_img"></i>Voir tous les albums</a>
       </li>
       {% if app.user is not null%}
       <!-- si null, alors utilisateur n'est pas connecté -->

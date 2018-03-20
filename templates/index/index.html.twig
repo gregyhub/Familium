@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <h1>Familium</h1>
+    <img class="logo_acc center-block" src="{{ asset("logo/fami_tr.png") }}">
         <div class="row">
             {% include 'aside.html.twig' %}
             <div class="col-md-8">
@@ -29,8 +29,8 @@
             </div>
                 {% if article.nbcomment > 0 %}
             <div>
-                <button class="btn btn-primary btn-xs togglec showcomment" data="{{ article.id }}">Afficher les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
-                <button class="btn btn-primary btn-xs togglec hidecomment" data="{{ article.id }}">Masquer les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+                <button class="btn btn-xs togglec showcomment" data="{{ article.id }}">Afficher les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
+                <button class="btn btn-xs togglec hidecomment" data="{{ article.id }}">Masquer les commentaires <span class="badge">{{ article.nbcomment }}</span></button>
             </div>
                 {{ render(controller('App\\Controller\\CommentController::listComments', {'id':article.id})) }} 
                 {% endif %}
