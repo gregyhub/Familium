@@ -26,7 +26,6 @@ class UserController extends Controller
     public function edit(UserPasswordEncoderInterface $encode, Request $request)
     {
         $user = $this->getUser();
-        dump($user->getMdp());
         $form = $this->createForm(UserType::class, $user, ['controller' => 'user']);
         $form->handleRequest($request); //le formulaire traite la requete HTTP
        //le formulaire a été envoyé ou NON ? si oui, il fait le mapping avec notre objet category et effectue les Setter à notre place
@@ -43,7 +42,7 @@ class UserController extends Controller
                //fait l'enregistement en bdd
                $em->flush(); //execute des transaction SQL. si tout passe va envoie en bdd, sinon fait un rollback
                $this->addFlash('success', 'Bravo '.$user->getFullName().', votre compte a été modifié avec succès !'); //ajout du message flash
-               return $this->redirectToRoute('app_index_index'); //redirection
+               // return $this->redirectToRoute('app_index_index'); //redirection
            }
            else{
                $this->addFlash('error', 'erreur'); //ajout du message flash
@@ -53,5 +52,18 @@ class UserController extends Controller
             
             'form' => $form->createView()
         ]);
+        
     }
+    /**
+     * @Route("/login", name="login")
+     */
+    public function loginAction() {
+        $helper = $this->get('security.authentication_utils');
+      
+        return $this->render('default/login.html.twig', array(
+            'last_username' => $helper->getLastUsername(),
+            'error' => $helper->getLastAuthenticationError()
+        ));
+    }
+    
 }

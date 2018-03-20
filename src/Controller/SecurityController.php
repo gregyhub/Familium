@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class SecurityController extends Controller
 {
@@ -68,4 +70,3 @@ class SecurityController extends Controller
         //symfony intercepte cette route pour nous déconnecter et nous rediriger sur la page défini aussi sur la conf.
     }
 }
-
