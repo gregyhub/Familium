@@ -50,7 +50,20 @@ class Messaging
      */
     private $newmessage='new';
     
-    public function getNewmessage() {
+    
+    private $newpersist='new';
+    
+    
+    public function getNewpersist() {
+        return $this->newpersist;
+    }
+
+    public function setNewpersist($newpersist) {
+        $this->newpersist = $newpersist;
+        return $this;
+    }
+
+        public function getNewmessage() {
         return $this->newmessage;
     }
 
@@ -61,6 +74,7 @@ class Messaging
 
     public function __construct() {
         $this->dateMessage = new \DateTime("now");
+        $this->newpersist = $this->getNewmessage();
     }
     
     public function getId() {
@@ -79,6 +93,9 @@ class Messaging
         return $this->dateMessage;
     }
 
+    public function getMessageClean() {
+        return nl2br($this->message);
+    }
     public function getMessage() {
         return $this->message;
     }
@@ -108,7 +125,22 @@ class Messaging
         return $this;
     }
 
+    public function setHistory($originMessage){
+        $history = '  <br>___________________________________________________<br>';
+        $history .= 'le ';
+        $history .= $originMessage->getDateMessage()->format('Y-m-d H:i:s');
+        $history .= ', ';
+        $history .= $originMessage->getAuthor()->getFullname();
+        $history .= ' à écrit :<br>';
+        
+        dump($history);
+        $history = str_replace('<br>', "\r\n", $history);
+        dump($history);
 
+        
+        $history .= $originMessage->getMessage();
+        $this->setMessage($history);
+    }
     
     
 }

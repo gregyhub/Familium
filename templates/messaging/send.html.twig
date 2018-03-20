@@ -1,8 +1,16 @@
 {% extends 'layout.html.twig' %}
-
+{% block javascripts %}
+    {{ parent() }}
+    <script> $(function(){
+        $('textarea').on('change', function(){
+            console.log($(this).html());
+        });
+    });</script>
+{% endblock %}
 
 {% block content %}
  <div class="row">
+    <h1>Envoyez un message à {{ recipient.getfullname }} </h1>
     {% include 'aside.html.twig' %}
     <div class="col-md-8">
 
