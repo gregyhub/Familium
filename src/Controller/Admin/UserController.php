@@ -31,7 +31,8 @@ class UserController extends Controller
             $em->flush();
         }
         
-        return $this->render('admin/user/liste.html.twig', [
+        return $this->render('admin/user/liste.html.twig', 
+        [
           'users' => $users
         ]);
     }

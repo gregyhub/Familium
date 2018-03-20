@@ -47,24 +47,24 @@
    </script>
 {% endblock %}
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
                 <a href="{{ path('app_user_edit') }}" >Edit Profile</a> <br>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-                <div class="panel panel-info">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 toppad" >
+                <div class="panel panel-info ">
                     <div class="panel-heading">
                         <h3 class="panel-title">Nom  Prenom</h3>
                     </div>
                 </div>
                 <div class="panel-body">
         <div class="row">
-            <div class="col-md-3 col-lg-3 " align="center"> 
-                <img alt="User Pic" src="{{ asset('avatars/001.jpg') }}" class="img-circle img-responsive"> 
+            <div class="col-md-5 col-lg-5 " align="center"> 
+                <img alt="User Pic" src="{{ asset('avatars/' ~ user.avatar ) }}" class="img-rounded img-responsive"> 
             </div>
 
-            <div class=" col-md-9 col-lg-9 "> 
+            <div class=" col-md-7 col-lg-7 "> 
                 <table class="table table-user-information">
                     <tbody>
                         <tr>

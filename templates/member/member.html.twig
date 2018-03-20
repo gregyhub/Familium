@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+   
+    <h1>Liste des utilisateurs</h1> 
+    
+    {% for member in allmember %}
+        {# {% include 'article/preview.html.twig' with {"article": article} only %}  #}
+        
+        <div class="jumbotron">
+            
+            <h3>{{ member.getFullname}}</h3>
+            <h3> {{ member.email}}</h3>
+            <h3> {{ member.telephone}}</h3>
+            
+        </div>
+
+        
+    {% endfor %}
+    
+{% endblock %}
+
