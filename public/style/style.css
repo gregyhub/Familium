@@ -211,3 +211,7 @@ div .formu{
 .panel_haut{
     max-height: 50px;
 }
+
+.messaging{
+    margin: 0 0 15px 15px;
+}

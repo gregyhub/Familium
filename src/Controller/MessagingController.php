@@ -9,17 +9,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use function dump;
 
 class MessagingController extends Controller
 {
     /**
-     * @Route("/messaging/send/{id}")
+     * @Route("/messaging/send/{id}/{message}", defaults={"message":null}, options={"mapping": {"messaging": "id"}})
      */
-    public function send(Request $request, User $recipient)
+    public function send(Request $request, User $recipient, $message)
     {
-        
+        $repository = $this->getDoctrine()->getRepository(Messaging::class);
+        $originMessage = $repository->find($message);
         $messaging = new Messaging();
+        if(!is_null($originMessage)){
+           
+            $messaging->setHistory($originMessage);
+        }
         $messaging->setAuthor($this->getUser());
         $messaging->setRecipient($recipient);
         //creation du formulaire
@@ -35,7 +39,7 @@ class MessagingController extends Controller
             $em->persist($messaging); 
             $em->flush(); 
             $this->addFlash('success', 'Le message à bien été transmit à '.$recipient->getFullName().'.'); //ajout du message flash
-            return $this->redirectToRoute('app_index_index'); //redirection
+            return $this->redirectToRoute('app_messaging_sended'); //redirection
             } else{
               $this->addFlash('error', 'erreur'); //ajout du message flash
             }
@@ -48,37 +52,41 @@ class MessagingController extends Controller
     
     /**
      * 
-     * @Route("messagine/receive")
+     * @Route("messaging/received")
      */
     public function received()
     {                    
        $repository = $this->getDoctrine()->getRepository(Messaging::class);
-       $messages = $repository->findBy(['recipient'=>$this->getUser()]);
+       $messages = $repository->findBy(['recipient'=>$this->getUser()], ['dateMessage'=>'DESC']);
        
        $em = $this->getDoctrine()->getManager();
        foreach ($messages as $message){
            if($message->getNewmessage()=="new"){
                $message->setNewmessage('old');
                $em->persist($message);
+           }else{
+                $message->setNewpersist('old');
            }
        }
        $em->flush();
         return $this->render('messaging/messages.html.twig', [
-            'messages' => $messages
+            'messages' => $messages,
+             'info' => 'received'   
         ]);
     }
     
     /**
      * 
-     * @Route("messagine/sended")
+     * @Route("messaging/sended")
      */
     public function sended()
     {                    
        $repository = $this->getDoctrine()->getRepository(Messaging::class);
-       $messages = $repository->findBy(['author'=>$this->getUser()]);
+       $messages = $repository->findBy(['author'=>$this->getUser()], ['dateMessage'=>'DESC']);
        
         return $this->render('messaging/messages.html.twig', [
-            'messages' => $messages
+            'messages' => $messages,
+             'info' => 'sended'   
         ]);
     }
     

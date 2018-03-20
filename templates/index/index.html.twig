@@ -25,7 +25,7 @@
             {% endif %}
                 
             <div class="article_content clearfix">
-                <p>{{ article.content}}</p>
+                <p>{{ article.content|raw }}</p>
             </div>
                 {% if article.nbcomment > 0 %}
             <div>

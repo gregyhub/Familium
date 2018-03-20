@@ -1,18 +1,51 @@
 {% extends 'layout.html.twig' %}
 
 
+
 {% block content %}
  <div class="row">
+    {% if info == 'sended' %}
+         <h1>Messages envoyés</h1>
+    {% else %}
+         <h1>Boite de reception</h1>
+    {% endif %}
     {% include 'aside.html.twig' %}
     <div class="col-md-8">
-
-       {% for message in messages %}
-           {{ message.author }}
-           {{ message.recipient }}
-           {{ message.datemessage|date('d/m/Y') }}
-           {{ message.message }}
+        {% for message in messages %}
+        <article class="article">                      
+             <div class="haut">            
+                  {{ render(controller('App\\Controller\\MemberController::getButton', {'id':message.author.id})) }} 
+                  {% if info == 'received' and message.newpersist == 'new' %}
+                       {{ message.newpersist }}
+                   {% endif %}
+             </div>
+            <div class="article_content clearfix">
+                <p>{{ message.messageclean|raw }}</p>
+                {% if info == 'sended' %}
+                    <p class="text-left" style="font-size:13px;"><small>Message envoyé le : {{ message.datemessage|date('d/m/Y') }} à {{ message.datemessage|date('H:i') }}</small></p>                
+                {% else %}
+                    <p class="text-left" style="font-size:13px;"><small>Message reçu le : {{ message.datemessage|date('d/m/Y') }} à {{ message.datemessage|date('H:i') }}</small></p>                
+                {% endif %}
+            </div>
+            {% if info == 'received' %}
+                <div>
+                <a class="btn btn-primary btn-xs messaging" href="{{ path('app_messaging_send', {'id':message.author.id,'message':message.id}) }}">Répondre</a>
+            </div>
+            {% endif %}
+            
+        </article>
+        
        {% else %}
-           aucun message
+        <article class="article">                      
+             <div class="haut">            
+                 
+             </div> <div class="titre_article">
+                <h3> aucun message</h3> 
+               
+            </div>  
+                          
+             
+        </article>
        {% endfor %}
     
     </div>

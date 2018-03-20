@@ -9,12 +9,17 @@
 
 {% block javascripts %}
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
     <script
      src="https://code.jquery.com/jquery-3.3.1.min.js"
      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
      crossorigin="anonymous"></script>
    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <script>
+        $('.flash').ready(function(){
+            setTimeout(function(){$('.flash').hide('slow');}, 3000);
+        });
+   </script>
 {% endblock %}
 
 
@@ -52,8 +57,12 @@
                     <ul class="nav nav-tabs">
                         <li role="presentation" class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                {% set nb = render(controller('App\\Controller\\MessagingController::countNews')) %}
                                 <i class="fas fa-comment-alt icone"></i>
-                                <span class="badge">{{ render(controller('App\\Controller\\MessagingController::countNews')) }}</span>
+                                {% if nb > 0 %}
+                                    <span class="badge">{{ nb }}</span>
+                                {% endif %}
+                                
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('app_messaging_received') }}">Boite de reception</a></li>
@@ -75,7 +84,7 @@
                 {% if type == 'error' %}
                     {% set type = 'danger' %}
                 {% endif %}
-                <div class="alert alert-{{ type }}">
+                <div class="flash alert alert-{{ type }}">
                 {{ message|raw }}  {# raw dit que si y a du html, on l'affiche en HTML #}
                 </div>
             {% endfor %}
