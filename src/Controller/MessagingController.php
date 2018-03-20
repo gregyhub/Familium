@@ -13,15 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class MessagingController extends Controller
 {
     /**
-     * @Route("/messaging/send/{id}/{message}", defaults={"message":null}, options={"mapping": {"messaging": "id"}})
+     * @Route("/messaging/send/{id}/{message}", defaults={"message":null}, options={"mapping": {"messaging": "id"}}, name="messaging_response")
+     * @Route("/messaging/send/{id}")
      */
-    public function send(Request $request, User $recipient, $message)
+    public function send(Request $request, User $recipient, $message=null)
     {
         $repository = $this->getDoctrine()->getRepository(Messaging::class);
-        $originMessage = $repository->find($message);
         $messaging = new Messaging();
-        if(!is_null($originMessage)){
-           
+        if(!is_null($message)){
+            $originMessage = $repository->find($message);
             $messaging->setHistory($originMessage);
         }
         $messaging->setAuthor($this->getUser());

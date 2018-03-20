@@ -271,3 +271,7 @@ div button .badge{
 .messaging{
     margin: 0 0 15px 15px;
 }
+
+#messaging_message{
+    height: 200px;
+}

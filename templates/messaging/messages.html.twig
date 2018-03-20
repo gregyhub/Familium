@@ -29,7 +29,7 @@
             </div>
             {% if info == 'received' %}
                 <div>
-                <a class="btn btn-primary btn-xs messaging" href="{{ path('app_messaging_send', {'id':message.author.id,'message':message.id}) }}">Répondre</a>
+                <a class="btn btn-primary btn-xs messaging" href="{{ path('messaging_response', {'id':message.author.id,'message':message.id}) }}">Répondre</a>
             </div>
             {% endif %}
             
