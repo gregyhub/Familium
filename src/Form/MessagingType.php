@@ -14,12 +14,11 @@ class MessagingType extends AbstractType
     {
                
         $builder            
-            ->add(  'message',
-            TextareaType::class,
-                    [
-                    'label'    => 'message',                    
-                    ]
-            );
+                ->add('message', \Ivory\CKEditorBundle\Form\Type\CKEditorType::class, array(
+                    'config' => array(
+                        'uiColor' => '#ffffff',
+                    ),
+                ));
         
     }
 

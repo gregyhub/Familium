@@ -126,19 +126,15 @@ class Messaging
     }
 
     public function setHistory($originMessage){
-        $history = '  <br>___________________________________________________<br>';
+        $history = '<br>___________________________________________________<br>';
         $history .= 'le ';
         $history .= $originMessage->getDateMessage()->format('Y-m-d H:i:s');
         $history .= ', ';
         $history .= $originMessage->getAuthor()->getFullname();
         $history .= ' à écrit :<br>';
-        
-        dump($history);
         $history = str_replace('<br>', "\r\n", $history);
-        dump($history);
-
-        
-        $history .= $originMessage->getMessage();
+        $history = nl2br($history);
+        $history .= $originMessage->getMessageClean();
         $this->setMessage($history);
     }
     

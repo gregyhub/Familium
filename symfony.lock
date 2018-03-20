@@ -65,6 +65,18 @@
             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
         }
     },
+    "egeloen/ckeditor-bundle": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "5.0",
+            "ref": "9bff1a2f13047142fd0ed93ba71cb7df5c86a2fa"
+        }
+    },
+    "egeloen/json-builder": {
+        "version": "3.0.0"
+    },
     "egulias/email-validator": {
         "version": "2.1.3"
     },
