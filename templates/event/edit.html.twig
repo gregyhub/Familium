@@ -2,11 +2,11 @@
 
 
 {% block content %}
-    <h1>Ajouter un Evenement</h1>
+    <h1>Ajouter un evenement</h1>
     <div class="row">
         {% include 'aside.html.twig' %}
         <div class="col-md-8">
-            <p><a href="{{ path("app_index_index") }}">retour aux evenement</a></p>
+            <p><a href="{{ path("app_index_index") }}">Retour aux evenement</a></p>
 
            {{ form_start(form) }} {# ouvre notre balise form #}
 
@@ -23,7 +23,7 @@
                 {% endif %}
                 <div class="form-btn-group pull-right">
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
-                    <a href="{{ path('app_index_index') }}" class="btn btn-default">retour</a>
+                    <a href="{{ path('app_index_index') }}" class="btn btn-default">Retour</a>
                 </div>
             {{ form_end(form) }} {# ferme notre balise form #}
         </div>

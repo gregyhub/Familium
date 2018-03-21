@@ -38,7 +38,7 @@ class ArticleType extends AbstractType
                      'class' => Category::class,
                         //nom du champ qui s'affiche dans les options : ici le name de la category
                     'choice_label' => 'name',
-                     'placeholder' => 'choisissez une catégorie'
+                     'placeholder' => 'Choisissez une catégorie'
                     ]
               )
             ->add(  'picture',
