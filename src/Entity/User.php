@@ -141,13 +141,18 @@ class User implements AdvancedUserInterface
     public function getBirthdate() {
         return $this->birthdate;
     }
-
     public function getGender() {
+        return $this->gender;
+    }
+
+    public function getFullGender() {
         if($this->gender == 'm'){
             return 'homme';
         }
         return 'femme';
     }
+    
+    
 
     public function getPhone() {
         return $this->phone;

@@ -47,7 +47,8 @@ class UserController extends Controller
             );
         }
         $form = $this->createForm(UserType::class, $user, ['controller' => 'user', 'validation_groups' => ['edit']]);
-       
+        dump($user);
+         dump($form);
         $form->handleRequest($request); //le formulaire traite la requete HTTP
        //le formulaire a été envoyé ou NON ? si oui, il fait le mapping avec notre objet category et effectue les Setter à notre place
        //si le formulaire a été envoyé

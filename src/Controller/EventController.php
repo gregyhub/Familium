@@ -15,16 +15,7 @@ use function dump;
  */
 class EventController extends Controller
 {
-    /**
-     * @Route("/")
-     */
-    public function index()
-    {
-        return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
-        ]);
-    }
-    
+        
      /**
      * @Route("/edit/{id}", defaults={"id":null})
      */
@@ -86,7 +77,7 @@ class EventController extends Controller
             //fait l'enregistement en bdd
             $em->flush(); //execute des transaction SQL. si tout passe va envoie en bdd, sinon fait un rollback
             $this->addFlash('success', 'l\'article '.$event->getTitle().' a été enregistrée'); //ajout du message flash
-            return $this->redirectToRoute('app_event_index'); //redirection
+            return $this->redirectToRoute('app_index_index'); //redirection
            } else{
               $this->addFlash('error', 'erreur'); //ajout du message flash
             }
@@ -99,7 +90,6 @@ class EventController extends Controller
     }
     
     public function showinfo(Event $event){
-        dump($event);
         return $this->render('event/showinfo.html.twig', [
                 'event' => $event
         ]);

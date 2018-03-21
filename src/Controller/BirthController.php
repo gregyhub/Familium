@@ -88,7 +88,6 @@ class BirthController extends Controller
     }
     
     public function showinfo(Birth $birth){
-        dump($birth);
         return $this->render('birth/showinfo.html.twig', [
                 'birth' => $birth
         ]);

@@ -1,13 +1,13 @@
-<table class="table">
+<table class="table table-condensed">
     <tr>
         <th colspan="6">informations sur le bébé</th>
     </tr>
     <tr>
-        <td>{{ birth.firstname }}</td>
+        <td><strong>{{ birth.firstname }}</strong></td>
         <td>{{ birth.gender }}</td>
-        <td>{{ birth.weight }}</td>
-        <td>{{ birth.height }}</td>
-        <td>{{ birth.birthdate|date('d/m/Y') }}</td>
-        <td>{{ birth.birthhour|date('H:i') }}</td>
+        <td>{{ birth.weight }}kg</td>
+        <td>{{ birth.height }}cm</td>
+        <td>né(e)le : {{ birth.birthdate|date('d/m/Y') }}</td>
+        <td> à : {{ birth.birthhour|date('H:i') }}</td>
     </tr>
 </table>
