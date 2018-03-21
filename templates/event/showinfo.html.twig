@@ -1,9 +1,11 @@
-<table class="table table-condensed">
-    <tr>
-        <th colspan="2">informations sur l'évenement</th>
-    </tr>
-    <tr>
-        <td><address>{{ event.localisation }}</address></td>
-        <td>date : {{ event.dateevent|date('d/m/Y') }}</td>
-    </tr>
-</table>
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <tr>
+            <th colspan="2">informations sur l'évenement</th>
+        </tr>
+        <tr>
+            <td><address>{{ event.localisation }}</address></td>
+            <td>date : {{ event.dateevent|date('d/m/Y') }}</td>
+        </tr>
+    </table>
+</div>

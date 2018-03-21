@@ -64,10 +64,12 @@
     border-radius: 15px;    
 }
 .vignette_avatar_haut{
+    position: relative;
+    top:-5px;
     max-height: 30px;
     display: inline;
     float:left;
-    margin: 10px 0 5px 10px;
+    margin: 0 5px 5px 0;
     border-radius: 15px;    
 }
 .pseudo{
@@ -197,9 +199,7 @@ div .formu{
 }
 .icone{
     color: #7c4d25;
-    height: 20px;
-    position: relative;
-    left: 10px;
+    font-size: 1.3em;
 }
 .svg-inline--fa.fa-w-18{
     width: 2.125em;
@@ -274,4 +274,11 @@ div button .badge{
 
 #messaging_message{
     height: 200px;
+}
+
+.btn-message:hover{
+    color:#333
+}
+.message:hover{
+    color:#333
 }

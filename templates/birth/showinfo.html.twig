@@ -1,13 +1,15 @@
-<table class="table table-condensed">
-    <tr>
-        <th colspan="6">informations sur le bébé</th>
-    </tr>
-    <tr>
-        <td><strong>{{ birth.firstname }}</strong></td>
-        <td>{{ birth.gender }}</td>
-        <td>{{ birth.weight }}kg</td>
-        <td>{{ birth.height }}cm</td>
-        <td>né(e)le : {{ birth.birthdate|date('d/m/Y') }}</td>
-        <td> à : {{ birth.birthhour|date('H:i') }}</td>
-    </tr>
-</table>
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <tr>
+            <th colspan="6">informations sur le bébé</th>
+        </tr>
+        <tr>
+            <td><strong>{{ birth.firstname }}</strong></td>
+            <td>{{ birth.gender }}</td>
+            <td>{{ birth.weight }}kg</td>
+            <td>{{ birth.height }}cm</td>
+            <td>né(e)le : {{ birth.birthdate|date('d/m/Y') }}</td>
+            <td> à : {{ birth.birthhour|date('H:i') }}</td>
+        </tr>
+    </table>
+</div>

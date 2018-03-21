@@ -1,0 +1,54 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand arbre" href="{{ path('app_index_index')}}"><img class="logo" src="{{ asset("logo/fami_tr1.png") }}"></a>  
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            {% if app.user is null%}
+             <!-- si null, alors utilisateur n'est pas connecté -->
+            <li>
+                <a href="{{ path('app_security_login') }}">Connexion</a>
+            </li>
+            <li>
+                <a href="{{ path('app_security_register') }}">Inscription</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{{ path('app_user_indexuser') }}">
+                    <img alt="User Pic" src="{{ asset('avatars/' ~ app.user.avatar ) }}" class="img-rounded img-responsive vignette_avatar_haut">
+                    {{ app.user.fullname }}
+                </a>
+            </li>
+            
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle message" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    {% set nb = render(controller('App\\Controller\\MessagingController::countNews')) %}
+                    <i class="fas fa-comment-alt fa icone"></i>
+                    {% if nb > 0 %}
+                        <span class="badge">{{ nb }}</span>
+                    {% endif %}
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('app_messaging_received') }}">Boite de reception</a></li>
+                    <li><a href="{{ path('app_messaging_sended') }}">Message envoyé</a></li>
+                </ul>                          
+                
+            </li>  
+            <li>
+                <a href="{{ path('app_security_logout') }}">Déconnexion  <i class="fas fa-power-off deco"></i></a>
+            </li>
+            {% endif %}
+        </ul>  
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

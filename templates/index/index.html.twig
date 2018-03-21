@@ -22,7 +22,7 @@
             </div>  
             
             {% if article.picture %}
-                <img src="{{ asset('uploads/' ~ article.picture) }}" class="picture_article pull-left">
+                <div class="picture_article"><img src="{{ asset('uploads/' ~ article.picture) }}" class="pull-left img-responsive"></div>
             {% endif %}
                 
             <div class="article_content clearfix">
