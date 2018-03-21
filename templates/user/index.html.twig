@@ -6,10 +6,12 @@
         <div class="row">
             {% include 'aside.html.twig' %}
             <div class="col-md-8 profil">
-                <a class="user_menu" href="{{ path('app_user_view') }}"><i class="fas fa-user"></i> Voir mes informations personnelles </a>
-                <a class="user_menu" href="{{ path('app_user_edit') }}"><i class="fas fa-edit"></i>Modifier mes informations </a>
-                <a class="user_menu" href="{{ path('app_album_add') }}"><i class="fas fa-camera"></i> Créer un album photo </a>
-                <a class="user_menu" href="{{ path('app_album_myalbums') }}"><i class="fas fa-images"></i>Voir mes albums </a>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{{ path('app_user_view') }}"><i class="fas fa-user"></i> Voir mes informations personnelles </a></li>
+                    <li class="list-group-item"><a href="{{ path('app_user_edit') }}"><i class="fas fa-edit"></i> Modifier mes informations </a></li>
+                    <li class="list-group-item"><a href="{{ path('app_album_add') }}"><i class="fas fa-camera"></i> Créer un album photo </a></li>
+                    <li class="list-group-item"><a href="{{ path('app_album_myalbums') }}"><i class="fas fa-images"></i> Voir mes albums </a></li>
+                </ul>
             </div>
         </div>
 {% endblock %}
