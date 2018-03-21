@@ -24,12 +24,13 @@ class ArticleType extends AbstractType
                          'label' => 'Titre'
                     ]
                   )
-            ->add(  'content',
-                    TextareaType::class,
-                    [
-                     'label' => 'Contenu'
-                    ]
-              )
+             ->add('content', \Ivory\CKEditorBundle\Form\Type\CKEditorType::class, array(
+                    
+                         'label' => 'Contenu',
+                        'config' => array(
+                            'uiColor' => '#ffffff',
+                        ),
+                ))
             ->add(  'category',
                      EntityType::class,
                     [
