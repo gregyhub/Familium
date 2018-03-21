@@ -275,6 +275,9 @@ div button .badge{
 #messaging_message{
     height: 200px;
 }
+.user_menu{
+    padding: 0;
+    background: white;
 
 .btn-message:hover{
     color:#333

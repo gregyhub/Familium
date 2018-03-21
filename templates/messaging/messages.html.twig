@@ -1,13 +1,11 @@
 {% extends 'layout.html.twig' %}
 
-
-
 {% block content %}
  <div class="row">
     {% if info == 'sended' %}
          <h1>Messages envoyés</h1>
     {% else %}
-         <h1>Boite de reception</h1>
+         <h1>Boite de réception</h1>
     {% endif %}
     {% include 'aside.html.twig' %}
     <div class="col-md-8">
@@ -40,7 +38,7 @@
              <div class="haut">            
                  
              </div> <div class="titre_article">
-                <h3> aucun message</h3> 
+                <h3> Aucun message</h3> 
                
             </div>  
                           

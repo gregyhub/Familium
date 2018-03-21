@@ -38,7 +38,7 @@ class UserType extends AbstractType
             ->add(  'gender',
                     ChoiceType::class,
                     [
-                        'label' => 'sexe',
+                        'label' => 'Sexe',
                         'choices' => ['Homme' => 'm', 'Femme'=>'f'],
                         'expanded' => true,
                         'multiple' => false
@@ -88,7 +88,7 @@ class UserType extends AbstractType
             )->add(  'avatar',
                     FileType::class,
                     [
-                    'label'    => 'avatar',
+                    'label'    => 'Avatar',
                     'required' => false
                     ]
             );

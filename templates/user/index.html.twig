@@ -5,10 +5,11 @@
         <h1>Profil</h1>
         <div class="row">
             {% include 'aside.html.twig' %}
-            <div class="col-md-8">
-                <a class="user_menu" href="{{ path('app_user_view') }}">voir mes informations personnelles</a>
-                <a class="user_menu" href="{{ path('app_user_edit') }}">Modifier mes informations</a>
-                <a class="user_menu" href="{{ path('app_album_myalbums') }}">voir mes albums</a>
+            <div class="col-md-8 profil">
+                <a class="user_menu" href="{{ path('app_user_view') }}"><i class="fas fa-user"></i> Voir mes informations personnelles </a>
+                <a class="user_menu" href="{{ path('app_user_edit') }}"><i class="fas fa-edit"></i>Modifier mes informations </a>
+                <a class="user_menu" href="{{ path('app_album_add') }}"><i class="fas fa-camera"></i> Créer un album photo </a>
+                <a class="user_menu" href="{{ path('app_album_myalbums') }}"><i class="fas fa-images"></i>Voir mes albums </a>
             </div>
         </div>
 {% endblock %}
