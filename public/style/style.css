@@ -235,7 +235,7 @@ a{
 }
 .btn-primary:hover{
     background: #ff2971;
-    border: #ff2971;
+    border-color: #ff2971;
 }
 .nav-tabs>li>a:hover{
     background: none;
