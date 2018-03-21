@@ -52,7 +52,11 @@ class Birth extends SuperArticle
     }
 
     public function getGender() {
-        return $this->gender;
+        if($this->gender == 'm'){
+            return 'garçon';
+        }
+        return 'fille';
+        
     }
 
     public function getWeight() {

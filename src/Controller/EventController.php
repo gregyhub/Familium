@@ -47,6 +47,8 @@ class EventController extends Controller
            }
            
        }
+       $category = $this->getDoctrine()->getRepository(\App\Entity\Category::class)->findBy(['name'=>'evenement']);
+       $event->setCategory($category[0]);
        $form = $this->createForm(EventType::class, $event); 
         //le createForm est un méthode de controller 
         /// le categoryType est une méthode de formulaire. 
@@ -94,5 +96,12 @@ class EventController extends Controller
                 'form' => $form->createView(),
                 'original_image' => $originalImage
        ]);
+    }
+    
+    public function showinfo(Event $event){
+        dump($event);
+        return $this->render('event/showinfo.html.twig', [
+                'event' => $event
+        ]);
     }
 }

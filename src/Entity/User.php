@@ -143,7 +143,10 @@ class User implements AdvancedUserInterface
     }
 
     public function getGender() {
-        return $this->gender;
+        if($this->gender == 'm'){
+            return 'homme';
+        }
+        return 'femme';
     }
 
     public function getPhone() {

@@ -36,6 +36,8 @@ class BirthController extends Controller
            }
            
        }
+       $category = $this->getDoctrine()->getRepository(\App\Entity\Category::class)->findBy(['name'=>'naissance']);
+       $birth->setCategory($category[0]);
        $form = $this->createForm(BirthType::class, $birth); 
         //le createForm est un méthode de controller 
         /// le categoryType est une méthode de formulaire. 
@@ -83,5 +85,12 @@ class BirthController extends Controller
                 'form' => $form->createView(),
                 'original_image' => $originalImage
        ]);
+    }
+    
+    public function showinfo(Birth $birth){
+        dump($birth);
+        return $this->render('birth/showinfo.html.twig', [
+                'birth' => $birth
+        ]);
     }
 }

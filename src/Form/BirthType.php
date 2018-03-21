@@ -35,14 +35,14 @@ class BirthType extends ArticleType
                     TextType::class,
                     [
                      'label' => 'Poids du bébé',
-                     'required' => 'false'
+                     'required' => false
                     ]
               )
             ->add(  'height',
                     TextType::class,
                     [
                      'label' => 'Taille du bébé',
-                     'required' => 'false'
+                     'required' => false
                     ]
               )
             ->add(  'birthdate',
@@ -55,7 +55,7 @@ class BirthType extends ArticleType
                     TimeType::class,
                     [
                      'label' => 'Heure de naissance',
-                     'required' => 'false'
+                     'required' => false
                     ]
               )
         ;

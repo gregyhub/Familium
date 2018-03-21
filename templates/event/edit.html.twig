@@ -11,7 +11,7 @@
            {{ form_start(form) }} {# ouvre notre balise form #}
 
                 {{ form_row(form.title) }} {# affiche le bloc input pour ce champ #}
-                {{ form_row(form.category) }}
+                {{ form_widget(form.category, {'attr': {'class': 'sr-only'}}) }}
                 {{ form_row(form.content) }}
                 {{ form_row(form.localisation) }}
                 {{ form_row(form.dateevent) }}

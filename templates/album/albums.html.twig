@@ -11,7 +11,6 @@
             <div class="row article">
                  <div class="haut">
                     {{ render(controller('App\\Controller\\MemberController::getButton', {'id':album.author.id})) }}
-                   <img alt="User Pic" src="{{ asset('avatars/' ~ album.author.avatar ) }}" class="img-rounded img-responsive vignette_avatar">
                 </div>
                 <div class="titre_article">
                     {% if album.author.id == app.user.id%}
