@@ -18,10 +18,10 @@ use function dump;
 class EventController extends Controller
 {
   
-    public function formEvent(User $user)
+    public function formEvent()
     {
         $event = new Event();
-        $event->setAuthor($user);
+        $event->setAuthor($this->getUser());
         //$event->setCategory($category);
         $form = $this->createForm(EventType::class, $event); 
         return $this->render('event/eventform.html.twig', [

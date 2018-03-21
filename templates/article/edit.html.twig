@@ -19,7 +19,7 @@
                     success: function (data){
                         if(data.success === 'event'){
                             console.log(data);
-                            {# $('.insertForm').html({{ render(controller('App\\Controller\\EventController::formEvent')) }}; #}
+                            $('.insertForm').html(`{{ render(controller('App\\Controller\\EventController::formEvent')) }}`); 
                             
                         }
                         //$('div#ajax-results').html(data.output);

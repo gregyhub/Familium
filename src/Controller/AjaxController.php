@@ -24,11 +24,12 @@ class AjaxController extends Controller
             $response=[];
             if($category->getName() == 'Evenement'){
                 
-                $test = $this->get('event_form');
+               /* $test = $this->get('event_form');
                 $user=$this->getUser();
                 dump($test->formEvent($user));
-                return new JsonResponse(array('success' => $test));
-          
+                return new JsonResponse(array('success' => $test));*/
+                return new JsonResponse(array('success' => 'event'));
+            
             }elseif($category->getName() == 'Naissance'){
                 $response=array('success' => 'Naissance');
             }

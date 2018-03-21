@@ -62,7 +62,9 @@ class ArticleController extends Controller
        //si le formulaire a été envoyé
        if($form->isSubmitted()){
            if($form->isValid()){
-           //si il n'y a pas d'erreur de validation du formulaire > dans la class category
+               dump($article->getCategory());die;
+                
+            //si il n'y a pas d'erreur de validation du formulaire > dans la class category
             $file =  $article->getPicture(); //équivalent à puisqu le formulaire est mappé sur article : $form['picture']->getData(); 
             
             if(!is_null($file)){
